@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Product Images</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .image-test { margin: 10px 0; }
+        .base64-input { width: 100%; height: 100px; margin: 10px 0; }
+        .test-image { max-width: 200px; max-height: 200px; border: 1px solid #ccc; margin: 10px; }
+        .json-output { background: #f5f5f5; padding: 10px; border-radius: 4px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Product Images for Supabase</h1>
+    
+    <div class="test-section">
+        <h2>Step 1: Test Base64 Image</h2>
+        <p>Paste a base64 image string here to test if it displays correctly:</p>
+        <textarea class="base64-input" placeholder="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."></textarea>
+        <button onclick="testImage()">Test Image Display</button>
+        <div id="imageResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Step 2: Generate JSON for Supabase</h2>
+        <p>Add multiple base64 images to create a JSON array for your product_images column:</p>
+        <div id="imageList"></div>
+        <button onclick="addImageInput()">Add Another Image</button>
+        <button onclick="generateJSON()">Generate JSON for Supabase</button>
+        <div id="jsonResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Step 3: Instructions</h2>
+        <ol>
+            <li>Test your base64 image in Step 1</li>
+            <li>Add multiple images in Step 2</li>
+            <li>Copy the generated JSON</li>
+            <li>Go to your Supabase dashboard → Table Editor → products</li>
+            <li>Find a product and edit the product_images column</li>
+            <li>Paste the JSON array</li>
+            <li>Save and check your website!</li>
+        </ol>
+    </div>
+
+    <script>
+        let imageCount = 0;
+
+        function testImage() {
+            const input = document.querySelector('.base64-input').value;
+            const result = document.getElementById('imageResult');
+            
+            if (!input.startsWith('data:image/')) {
+                result.innerHTML = '<p style="color: red;">❌ Invalid base64 image format. Must start with "data:image/"</p>';
+                return;
+            }
+            
+            result.innerHTML = `
+                <p style="color: green;">✅ Valid base64 image!</p>
+                <img src="${input}" class="test-image" alt="Test Image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <p style="display: none; color: red;">❌ Image failed to load</p>
+            `;
+        }
+
+        function addImageInput() {
+            imageCount++;
+            const container = document.getElementById('imageList');
+            const div = document.createElement('div');
+            div.className = 'image-test';
+            div.innerHTML = `
+                <label>Image ${imageCount + 1}:</label>
+                <textarea class="base64-input" placeholder="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."></textarea>
+            `;
+            container.appendChild(div);
+        }
+
+        function generateJSON() {
+            const inputs = document.querySelectorAll('#imageList .base64-input');
+            const images = [];
+            
+            inputs.forEach(input => {
+                if (input.value.trim() && input.value.startsWith('data:image/')) {
+                    images.push(input.value.trim());
+                }
+            });
+            
+            if (images.length === 0) {
+                document.getElementById('jsonResult').innerHTML = '<p style="color: red;">❌ No valid images found</p>';
+                return;
+            }
+            
+            const json = JSON.stringify(images);
+            document.getElementById('jsonResult').innerHTML = `
+                <p style="color: green;">✅ Generated JSON for ${images.length} images:</p>
+                <div class="json-output">${json}</div>
+                <button onclick="copyToClipboard('${json.replace(/'/g, "\\'")}')">Copy to Clipboard</button>
+            `;
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('JSON copied to clipboard!');
+            });
+        }
+
+        // Add initial image input
+        addImageInput();
+    </script>
+</body>
+</html>
+
