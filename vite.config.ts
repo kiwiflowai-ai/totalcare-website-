@@ -18,9 +18,7 @@ export default defineConfig(({ mode }) => ({
   assetsInclude: ["**/*.JPEG", "**/*.JPG", "**/*.PNG", "**/*.jpeg", "**/*.jpg", "**/*.png"],
   build: {
     rollupOptions: {
-      input: {
-        main: './index.html'
-      }
+      input: './index.html'
     }
   }
 }));
