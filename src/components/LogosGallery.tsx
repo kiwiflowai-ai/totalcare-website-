@@ -1,11 +1,19 @@
+import logo1 from '@/assets/logos/IMG_5860.JPEG';
+import logo2 from '@/assets/logos/IMG_5862.PNG';
+import logo3 from '@/assets/logos/IMG_5864.PNG';
+import logo4 from '@/assets/logos/IMG_5865.JPEG';
+import logo5 from '@/assets/logos/IMG_5866.PNG';
+import logo6 from '@/assets/logos/IMG_5867.JPEG';
+import logo7 from '@/assets/logos/IMG_5868.PNG';
+
 const logos = [
-  '/src/assets/logos/IMG_5860.JPEG',
-  '/src/assets/logos/IMG_5862.PNG',
-  '/src/assets/logos/IMG_5864.PNG',
-  '/src/assets/logos/IMG_5865.JPEG',
-  '/src/assets/logos/IMG_5866.PNG',
-  '/src/assets/logos/IMG_5867.JPEG',
-  '/src/assets/logos/IMG_5868.PNG'
+  logo1,
+  logo2,
+  logo3,
+  logo4,
+  logo5,
+  logo6,
+  logo7
 ];
 
 export function LogosGallery() {

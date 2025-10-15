@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Link, useLocation } from 'react-router-dom';
+import logoImage from '@/assets/logos/main.JPEG';
 
 export function Header() {
   const location = useLocation();
@@ -16,7 +17,7 @@ export function Header() {
           {/* Logo and Brand */}
           <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <img 
-              src="/src/assets/logos/main.JPEG" 
+              src={logoImage} 
               alt="TotalCare Electrician Logo" 
               className="w-12 h-12 object-contain"
             />
