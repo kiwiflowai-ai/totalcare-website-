@@ -5,15 +5,25 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder.supabase.co'
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-key'
 
+// Debug logging
+console.log('🔍 Supabase Configuration Debug:');
+console.log('VITE_SUPABASE_URL:', import.meta.env.VITE_SUPABASE_URL);
+console.log('VITE_SUPABASE_ANON_KEY:', import.meta.env.VITE_SUPABASE_ANON_KEY ? 'Present' : 'Missing');
+console.log('Using URL:', supabaseUrl);
+console.log('Using Key:', supabaseAnonKey.substring(0, 20) + '...');
+
 // Create a mock client if credentials are not provided
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 // Check if we're using placeholder credentials
 export const isSupabaseConfigured = () => {
-  return import.meta.env.VITE_SUPABASE_URL && 
+  const configured = import.meta.env.VITE_SUPABASE_URL && 
          import.meta.env.VITE_SUPABASE_ANON_KEY &&
          !import.meta.env.VITE_SUPABASE_URL.includes('placeholder') &&
          !import.meta.env.VITE_SUPABASE_ANON_KEY.includes('placeholder')
+  
+  console.log('🔧 Supabase Configured:', configured);
+  return configured;
 }
 
 

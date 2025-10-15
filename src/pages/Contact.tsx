@@ -6,6 +6,8 @@ import { Label } from '@/components/ui/label';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Phone, MapPin, Mail, Clock, MessageSquare } from 'lucide-react';
+import whatsappSc1 from '@/assets/whatsapp/sc1.JPEG';
+import whatsappSc2 from '@/assets/whatsapp/sc2.png';
 
 export default function Contact() {
   return (
@@ -26,7 +28,7 @@ export default function Contact() {
               <Card className="p-8 text-center">
                 <h3 className="text-xl font-semibold text-foreground mb-6">WhatsApp Business</h3>
                 <img 
-                  src="/src/assets/whatsapp/sc1.JPEG" 
+                  src={whatsappSc1} 
                   alt="WhatsApp QR Code 1" 
                   className="w-80 h-80 mx-auto object-contain rounded-lg border border-border"
                 />
@@ -35,7 +37,7 @@ export default function Contact() {
               <Card className="p-8 text-center">
                 <h3 className="text-xl font-semibold text-foreground mb-6">WhatsApp Support</h3>
                 <img 
-                  src="/src/assets/whatsapp/sc2.png" 
+                  src={whatsappSc2} 
                   alt="WhatsApp QR Code 2" 
                   className="w-80 h-80 mx-auto object-contain rounded-lg border border-border"
                 />
