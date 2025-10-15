@@ -1,9 +1,16 @@
-import { supabase } from '@/lib/supabase'
+import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 import { Product } from '@/types/database'
+import { products as fallbackProducts } from '@/data/products'
 
 // Function to get all products from Supabase
 export async function getAllProducts(): Promise<Product[]> {
   try {
+    // If Supabase is not configured, use fallback data
+    if (!isSupabaseConfigured()) {
+      console.log('Supabase not configured, using fallback products')
+      return fallbackProducts
+    }
+
     const { data, error } = await supabase
       .from('products')
       .select('*')
@@ -11,19 +18,24 @@ export async function getAllProducts(): Promise<Product[]> {
 
     if (error) {
       console.error('Error fetching products:', error)
-      return []
+      return fallbackProducts
     }
 
-    return data || []
+    return data || fallbackProducts
   } catch (error) {
     console.error('Error fetching products:', error)
-    return []
+    return fallbackProducts
   }
 }
 
 // Function to get products by brand
 export async function getProductsByBrand(brand: string): Promise<Product[]> {
   try {
+    // If Supabase is not configured, use fallback data
+    if (!isSupabaseConfigured()) {
+      return fallbackProducts.filter(p => p.brand.toLowerCase() === brand.toLowerCase())
+    }
+
     const { data, error } = await supabase
       .from('products')
       .select('*')
@@ -32,19 +44,29 @@ export async function getProductsByBrand(brand: string): Promise<Product[]> {
 
     if (error) {
       console.error('Error fetching products by brand:', error)
-      return []
+      return fallbackProducts.filter(p => p.brand.toLowerCase() === brand.toLowerCase())
     }
 
-    return data || []
+    return data || fallbackProducts.filter(p => p.brand.toLowerCase() === brand.toLowerCase())
   } catch (error) {
     console.error('Error fetching products by brand:', error)
-    return []
+    return fallbackProducts.filter(p => p.brand.toLowerCase() === brand.toLowerCase())
   }
 }
 
 // Function to search products
 export async function searchProducts(query: string): Promise<Product[]> {
   try {
+    // If Supabase is not configured, use fallback data
+    if (!isSupabaseConfigured()) {
+      const lowerQuery = query.toLowerCase()
+      return fallbackProducts.filter(p => 
+        p.name.toLowerCase().includes(lowerQuery) ||
+        p.brand.toLowerCase().includes(lowerQuery) ||
+        p.model.toLowerCase().includes(lowerQuery)
+      )
+    }
+
     const { data, error } = await supabase
       .from('products')
       .select('*')
@@ -53,13 +75,23 @@ export async function searchProducts(query: string): Promise<Product[]> {
 
     if (error) {
       console.error('Error searching products:', error)
-      return []
+      const lowerQuery = query.toLowerCase()
+      return fallbackProducts.filter(p => 
+        p.name.toLowerCase().includes(lowerQuery) ||
+        p.brand.toLowerCase().includes(lowerQuery) ||
+        p.model.toLowerCase().includes(lowerQuery)
+      )
     }
 
     return data || []
   } catch (error) {
     console.error('Error searching products:', error)
-    return []
+    const lowerQuery = query.toLowerCase()
+    return fallbackProducts.filter(p => 
+      p.name.toLowerCase().includes(lowerQuery) ||
+      p.brand.toLowerCase().includes(lowerQuery) ||
+      p.model.toLowerCase().includes(lowerQuery)
+    )
   }
 }
 

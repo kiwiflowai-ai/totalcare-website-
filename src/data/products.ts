@@ -43,11 +43,17 @@ function generateId(name: string, model: string): string {
   return `${name.toLowerCase().replace(/\s+/g, '-')}-${model.toLowerCase()}`;
 }
 
-import { supabase } from '@/lib/supabase';
+import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 
 // Function to fetch products from Supabase
 export async function getProducts(): Promise<Product[]> {
   try {
+    // If Supabase is not configured, use fallback data
+    if (!isSupabaseConfigured()) {
+      console.log('Supabase not configured, using fallback products');
+      return products;
+    }
+
     console.log('Fetching products from Supabase...');
     
     const { data, error } = await supabase
@@ -59,12 +65,12 @@ export async function getProducts(): Promise<Product[]> {
 
     if (error) {
       console.error('Error fetching products:', error);
-      return [];
+      return products;
     }
 
     if (!data || data.length === 0) {
-      console.log('No products found in Supabase');
-      return [];
+      console.log('No products found in Supabase, using fallback');
+      return products;
     }
 
     // Convert Supabase format to our Product interface
@@ -119,7 +125,7 @@ export async function getProducts(): Promise<Product[]> {
     return convertedProducts;
   } catch (error) {
     console.error('Error fetching products:', error);
-    return [];
+    return products;
   }
 }
 
