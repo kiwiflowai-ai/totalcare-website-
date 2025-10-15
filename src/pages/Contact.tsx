@@ -6,13 +6,14 @@ import { Label } from '@/components/ui/label';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Phone, MapPin, Mail, Clock, MessageSquare } from 'lucide-react';
-import whatsappSc1 from '@/assets/whatsapp/sc1.JPEG';
-import whatsappSc2 from '@/assets/whatsapp/sc2.png';
+// Supabase WhatsApp image URLs
+const whatsappSc1 = 'https://qivobmyugolhzrimfuht.supabase.co/storage/v1/object/public/product%20images/whatsapp/sc1.JPEG';
+const whatsappSc2 = 'https://qivobmyugolhzrimfuht.supabase.co/storage/v1/object/public/product%20images/whatsapp/sc2.png';
 
 // Debug logging
 console.log('🔍 WhatsApp Images Debug:');
-console.log('sc1 path:', whatsappSc1);
-console.log('sc2 path:', whatsappSc2);
+console.log('sc1 URL:', whatsappSc1);
+console.log('sc2 URL:', whatsappSc2);
 
 export default function Contact() {
   return (
