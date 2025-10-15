@@ -9,6 +9,11 @@ import { Phone, MapPin, Mail, Clock, MessageSquare } from 'lucide-react';
 import whatsappSc1 from '@/assets/whatsapp/sc1.JPEG';
 import whatsappSc2 from '@/assets/whatsapp/sc2.png';
 
+// Debug logging
+console.log('🔍 WhatsApp Images Debug:');
+console.log('sc1 path:', whatsappSc1);
+console.log('sc2 path:', whatsappSc2);
+
 export default function Contact() {
   return (
     <div className="min-h-screen bg-background">
@@ -31,6 +36,8 @@ export default function Contact() {
                   src={whatsappSc1} 
                   alt="WhatsApp QR Code 1" 
                   className="w-80 h-80 mx-auto object-contain rounded-lg border border-border"
+                  onLoad={() => console.log('✅ sc1 image loaded successfully')}
+                  onError={(e) => console.error('❌ sc1 image failed to load:', e)}
                 />
                 <p className="text-muted-foreground mt-4">Scan to chat with our team</p>
               </Card>
@@ -40,6 +47,8 @@ export default function Contact() {
                   src={whatsappSc2} 
                   alt="WhatsApp QR Code 2" 
                   className="w-80 h-80 mx-auto object-contain rounded-lg border border-border"
+                  onLoad={() => console.log('✅ sc2 image loaded successfully')}
+                  onError={(e) => console.error('❌ sc2 image failed to load:', e)}
                 />
                 <p className="text-muted-foreground mt-4">Scan for technical support</p>
               </Card>
