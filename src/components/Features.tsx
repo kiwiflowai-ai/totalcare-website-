@@ -2,6 +2,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Users, Award, Wrench } from 'lucide-react';
 import { BrandLogos } from './BrandLogos';
+import { TestimonialSlideshow } from './TestimonialSlideshow';
 
 const features = [
   {
@@ -28,17 +29,22 @@ const features = [
 
 export function Features() {
   return (
-    <section className="py-16 px-4 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Why Choose TotalCare Electrician?
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            We're Auckland's most trusted heat pump specialists, delivering exceptional 
-            service and energy savings for over a decade.
-          </p>
-        </div>
+    <>
+      {/* Testimonial Slideshow */}
+      <TestimonialSlideshow />
+      
+      {/* Why Choose Us Section */}
+      <section className="py-16 px-4 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Why Choose TotalCare Electrician?
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              We're Auckland's most trusted heat pump specialists, delivering exceptional 
+              service and energy savings for over a decade.
+            </p>
+          </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
@@ -51,9 +57,8 @@ export function Features() {
             </Card>
           ))}
         </div>
-
-
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import { Phone, MapPin, Menu, Home, ShoppingBag, MessageSquare, ChevronDown, ThermometerSun, Zap } from 'lucide-react';
+import { Phone, MapPin, Menu, Home, ShoppingBag, MessageSquare, ChevronDown, ThermometerSun, Zap, Wrench } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
@@ -82,6 +82,17 @@ export function Header() {
                 </div>
               </div>
               <Link 
+                to="/services" 
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  isActive('/services') 
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                }`}
+              >
+                <Wrench className="h-4 w-4" />
+                Services
+              </Link>
+              <Link 
                 to="/contact" 
                 className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   isActive('/contact') 
@@ -158,6 +169,17 @@ export function Header() {
                       </div>
                     </div>
                     <Link 
+                      to="/services" 
+                      className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                        isActive('/services') 
+                          ? 'bg-primary text-primary-foreground' 
+                          : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                      }`}
+                    >
+                      <Wrench className="h-4 w-4" />
+                      Services
+                    </Link>
+                    <Link 
                       to="/contact" 
                       className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                         isActive('/contact') 
@@ -181,9 +203,11 @@ export function Header() {
                       </a>
                     </div>
                   </div>
-                  <Button className="bg-gradient-primary hover:bg-primary-hover w-full">
-                    Get Free Quote
-                  </Button>
+                  <Link to="/services" className="w-full">
+                    <Button className="bg-gradient-primary hover:bg-primary-hover w-full">
+                      Get Free Quote
+                    </Button>
+                  </Link>
                 </div>
               </SheetContent>
             </Sheet>
