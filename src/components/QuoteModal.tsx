@@ -259,6 +259,17 @@ export function QuoteModal({ isOpen, onClose, product }: QuoteModalProps) {
                   <p className="text-base text-muted-foreground mt-6 font-medium">For inquiries & quotes</p>
                 </div>
 
+                {/* Phone Number Button */}
+                <div className="text-center">
+                  <Button
+                    onClick={() => window.open('tel:+64277500999', '_self')}
+                    className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+                  >
+                    <Phone className="w-4 h-4" />
+                    Call: +64 27 750 0999
+                  </Button>
+                </div>
+
                 <div className="text-xs text-muted-foreground text-center">
                   Scan with your phone's camera to start chatting
                 </div>
