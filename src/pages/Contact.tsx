@@ -7,14 +7,12 @@ import { Label } from '@/components/ui/label';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Phone, MapPin, Mail, Clock, MessageSquare } from 'lucide-react';
-// Supabase WhatsApp image URLs
+// Supabase WhatsApp image URL
 const whatsappSc1 = 'https://qivobmyugolhzrimfuht.supabase.co/storage/v1/object/public/product%20images/whatsapp/sc1.JPEG';
-const whatsappSc2 = 'https://qivobmyugolhzrimfuht.supabase.co/storage/v1/object/public/product%20images/whatsapp/sc2.png';
 
 // Debug logging
-console.log('🔍 WhatsApp Images Debug:');
+console.log('🔍 WhatsApp Image Debug:');
 console.log('sc1 URL:', whatsappSc1);
-console.log('sc2 URL:', whatsappSc2);
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -110,7 +108,7 @@ export default function Contact() {
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-6">Contact Us via WhatsApp</h2>
               <p className="text-muted-foreground mb-8">
-                Scan the QR codes below to contact us directly on WhatsApp for instant support and quotes.
+                Scan the QR code below to contact us directly on WhatsApp for instant support and quotes.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-8">
@@ -124,17 +122,6 @@ export default function Contact() {
                   onError={(e) => console.error('❌ sc1 image failed to load:', e)}
                 />
                 <p className="text-muted-foreground mt-4">Scan to chat with our team</p>
-              </Card>
-              <Card className="p-8 text-center">
-                <h3 className="text-xl font-semibold text-foreground mb-6">WhatsApp Support</h3>
-                <img 
-                  src={whatsappSc2} 
-                  alt="WhatsApp QR Code 2" 
-                  className="w-80 h-80 mx-auto object-contain rounded-lg border border-border"
-                  onLoad={() => console.log('✅ sc2 image loaded successfully')}
-                  onError={(e) => console.error('❌ sc2 image failed to load:', e)}
-                />
-                <p className="text-muted-foreground mt-4">Scan for technical support</p>
               </Card>
             </div>
           </div>
