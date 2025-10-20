@@ -1,10 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { FileText, CheckCircle, AlertTriangle, DollarSign } from 'lucide-react';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 
 export default function Terms() {
   return (
     <div className="min-h-screen bg-background">
+      <Header />
       {/* Header */}
       <div className="bg-primary/5 py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
@@ -211,6 +214,7 @@ export default function Terms() {
 
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
