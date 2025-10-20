@@ -13,7 +13,7 @@ export function Hero() {
           <div className="space-y-12 max-w-5xl">
             {/* Features Grid */}
             <div className="grid sm:grid-cols-2 gap-6">
-              <div className="flex items-center gap-4 p-6 bg-gradient-to-r from-success/20 to-success/10 border-2 border-success/30 rounded-xl shadow-lg">
+              <Link to="/products?brand=Heat%20Pumps" className="flex items-center gap-4 p-6 bg-gradient-to-r from-success/20 to-success/10 border-2 border-success/30 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
                 <div className="w-16 h-16 bg-success/20 rounded-xl flex items-center justify-center">
                   <ThermometerSun className="h-8 w-8 text-success" />
                 </div>
@@ -21,8 +21,8 @@ export function Hero() {
                   <div className="text-xl font-bold text-foreground">Heat Pump Installation</div>
                   <div className="text-lg text-muted-foreground">Professional installation</div>
                 </div>
-              </div>
-              <div className="flex items-center gap-4 p-6 bg-gradient-to-r from-blue-500/20 to-blue-500/10 border-2 border-blue-500/30 rounded-xl shadow-lg">
+              </Link>
+              <Link to="/products?brand=EV%20Charger" className="flex items-center gap-4 p-6 bg-gradient-to-r from-blue-500/20 to-blue-500/10 border-2 border-blue-500/30 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
                 <div className="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center">
                   <Zap className="h-8 w-8 text-blue-500" />
                 </div>
@@ -30,7 +30,7 @@ export function Hero() {
                   <div className="text-xl font-bold text-foreground">EV Charger Installation</div>
                   <div className="text-lg text-muted-foreground">Smart charging solutions</div>
                 </div>
-              </div>
+              </Link>
               <div className="flex items-center gap-4 p-6 bg-background/50 rounded-xl">
                 <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center">
                   <Award className="h-8 w-8 text-primary" />

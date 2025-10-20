@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { QuoteModal } from '@/components/QuoteModal';
 import { Zap, Thermometer, MessageSquare, ExternalLink } from 'lucide-react';
 import { Product } from '@/data/products';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 interface ProductCardNewProps {
