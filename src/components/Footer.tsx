@@ -69,8 +69,7 @@ export function Footer() {
             © 2024 TotalCare Electrician. Licensed & Insured. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-background/60">
-            <a href="#" className="hover:text-background transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-background transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-background transition-colors text-base font-semibold text-background/80 hover:text-background">Terms of Service</a>
             <a href="#" className="hover:text-background transition-colors">Warranty</a>
           </div>
         </div>
