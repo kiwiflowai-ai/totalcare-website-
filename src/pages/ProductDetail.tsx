@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Thermometer, Wifi, Zap, Settings, CheckCircle, MessageSquare, Images } from 'lucide-react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { ArrowLeft, Thermometer, Wifi, Zap, Settings, CheckCircle, MessageSquare, Images, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -636,6 +636,27 @@ function ProductDetail() {
               </CardContent>
             </Card>
 
+            {/* Terms and Conditions Link */}
+            <Card className="bg-primary/5 border-primary/20">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <FileText className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-foreground">Installation Terms & Conditions</h3>
+                      <p className="text-sm text-muted-foreground">Review pricing and installation guidelines</p>
+                    </div>
+                  </div>
+                  <Link to="/terms">
+                    <Button variant="outline" className="font-medium">
+                      View Details
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
 
           </div>
         </div>
