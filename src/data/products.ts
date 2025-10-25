@@ -139,20 +139,20 @@ export const products: Product[] = [
     id: "daikin-standard-20-27kw-heat-pump-ftxv20u",
     name: "Daikin Standard 2.0/2.7kw Heat Pump",
     brand: "Daikin",
-    description: `Cooling: 2.0 kW
-Heating: 2.7 kW
+    description: `Cooling:  2.0 kW
+Heating:  2.7 kW
 
 Optional WiFi Adaptor($150)
 
 Dimensions (HxWxD)
-Indoor: 285x770x223
-Outdoor: 550x675x284
+Indoor:285x770x223
+Outdoor:550x675x284
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 42/19
-Heat (dBA) 40/20
-Outdoor Sound Level (H/SL) Cool (dBA) 47/43
-Heat (dBA) 48/44`,
+Cool (dBA)        42/19
+Heat (dBA)        40/20
+Outdoor Sound Level (H/SL)        Cool (dBA)        47/43
+Heat (dBA)        48/44`,
     model: "FTXV20U",
     price: "$1553+GST",
     promotions: undefined,
@@ -165,20 +165,20 @@ Heat (dBA) 48/44`,
     id: "daikin-cora-20-28kw-heat-pump-ftxm25u",
     name: "Daikin Cora 2.0/2.8kw Heat Pump",
     brand: "Daikin",
-    description: `Cooling: 2.0 kW
-Heating: 2.8 kW
+    description: `Cooling:  2.0 kW
+Heating:  2.8 kW
 
 Optional WiFi Adaptor($150)
 
 Dimensions (HxWxD)
-Indoor: 285x770x226
-Outdoor: 550x675x284
+Indoor:285x770x226
+Outdoor:550x675x284
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 42/19
-Heat (dBA) 40/20
-Outdoor Sound Level (H/SL) Cool (dBA) 47/43
-Heat (dBA) 48/44`,
+Cool (dBA)        42/19
+Heat (dBA)        40/20
+Outdoor Sound Level (H/SL)        Cool (dBA)        47/43
+Heat (dBA)        48/44`,
     model: "FTXM25U",
     price: "$1620+GST ",
     promotions: undefined,
@@ -191,22 +191,22 @@ Heat (dBA) 48/44`,
     id: "daikin-alira-22-27-kw-heat-pump-with-wifi-ftxm20y",
     name: "Daikin Alira 2.2/2.7 kw Heat Pump with WIFI",
     brand: "Daikin",
-    description: `Cooling: 2.2 kW
-Heating: 2.7 kW
+    description: `Cooling:  2.2 kW
+Heating:  2.7 kW
 
 Built-in WiFi
 Mould-proof Operation 
 Advanced Air Purification
 
 Dimensions (HxWxD)
-Indoor: 299x920x275
-Outdoor: 550x675x284
+Indoor:299x920x275
+Outdoor:550x675x284
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 41/19
-Heat (dBA) 40/20
-Outdoor Sound Level (H/SL) Cool (dBA) 47/43
-Heat (dBA) 48/44`,
+Cool (dBA)        41/19
+Heat (dBA)        40/20
+Outdoor Sound Level (H/SL)        Cool (dBA)        47/43
+Heat (dBA)        48/44`,
     model: "FTXM20Y",
     price: "$1721+GST",
     promotions: undefined,
@@ -220,19 +220,19 @@ Heat (dBA) 48/44`,
     id: "daikin-standard-25-30kw-heat-pump-ftxv25u",
     name: "Daikin Standard 2.5/3.0kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 2.50 kW
-Heating: 3.20 kW
+    description: `Cooling:  2.50 kW
+Heating:  3.20 kW
 
 
 Dimensions (HxWxD)
-Indoor: 285x770x223
-Outdoor: 550x675x284
+Indoor:285x770x223
+Outdoor:550x675x284
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 42/19
-Heat (dBA) 40/20
-Outdoor Sound Level (H/SL) Cool (dBA) 47/43
-Heat (dBA) 48/44`,
+Cool (dBA)        42/19
+Heat (dBA)        40/20
+Outdoor Sound Level (H/SL)        Cool (dBA)        47/43
+Heat (dBA)        48/44`,
     model: "FTXV25U",
     price: "$1566+GST",
     promotions: undefined,
@@ -245,20 +245,20 @@ Heat (dBA) 48/44`,
     id: "daikin-cora-25-30kw-heat-pump-ftxm25u",
     name: "Daikin Cora 2.5/3.0kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 2.50 kW
-Heating: 3.20 kW
+    description: `Cooling:  2.50 kW
+Heating:  3.20 kW
 
 Optional WiFi Adaptor($150)
 
 Dimensions (HxWxD)
-Indoor: 285x770x226
-Outdoor: 550x675x284
+Indoor:285x770x226
+Outdoor:550x675x284
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 42/19
-Heat (dBA) 40/20
-Outdoor Sound Level (H/SL) Cool (dBA) 47/43
-Heat (dBA) 48/44`,
+Cool (dBA)        42/19
+Heat (dBA)        40/20
+Outdoor Sound Level (H/SL)        Cool (dBA)        47/43
+Heat (dBA)        48/44`,
     model: "FTXM25U",
     price: "$1750+GST",
     promotions: undefined,
@@ -271,22 +271,22 @@ Heat (dBA) 48/44`,
     id: "daikin-alira-25-32kw-heat-pump-ftxm25wvma",
     name: "Daikin Alira 2.5/3.2kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 2.50 kW
-Heating: 3.20 kW
+    description: `Cooling:  2.50 kW
+Heating:  3.20 kW
 
 Built-in WiFi
 Mould-proof Operation 
 Advanced Air Purification
 
 Dimensions (HxWxD)
-Indoor: 299x920x275
-Outdoor: 550x675x284
+Indoor:299x920x275
+Outdoor:550x675x284
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 41/19
-Heat (dBA) 40/20
-Outdoor Sound Level (H/SL) Cool (dBA) 47/43
-Heat (dBA) 48/44`,
+Cool (dBA)        41/19
+Heat (dBA)        40/20
+Outdoor Sound Level (H/SL)        Cool (dBA)        47/43
+Heat (dBA)        48/44`,
     model: "FTXM25WVMA",
     price: "$1844+GST",
     promotions: undefined,
@@ -299,20 +299,20 @@ Heat (dBA) 48/44`,
     id: "daikin-standard-35-37kw-heat-pump-ftxv35u",
     name: "Daikin Standard 3.5/3.7kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 3.5 kW
-Heating: 3.7kW
+    description: `Cooling:  3.5 kW
+Heating:  3.7kW
 
 Optional WiFi Adaptor($150)
 
 Dimensions (HxWxD)
-Indoor: 285x770x223
-Outdoor: 550x675x284
+Indoor:285x770x223
+Outdoor:550x675x284
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 42/19
-Heat (dBA) 40/20
-Outdoor Sound Level (H/SL) Cool (dBA) 49/44
-Heat (dBA) 49/45`,
+Cool (dBA)        42/19
+Heat (dBA)        40/20
+Outdoor Sound Level (H/SL)        Cool (dBA)        49/44
+Heat (dBA)        49/45`,
     model: "FTXV35U",
     price: "$1735+GST",
     promotions: undefined,
@@ -325,20 +325,20 @@ Heat (dBA) 49/45`,
     id: "daikin-new-cora-35-40kw-heat-pump-ftxm35u",
     name: "Daikin New Cora 3.5/4.0kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 3.5 kW
-Heating: 4.0 kW
+    description: `Cooling:  3.5 kW
+Heating:  4.0 kW
 
 Optional WiFi Adaptor($150)
 
 Dimensions (HxWxD)
-Indoor: 285x770x226
-Outdoor: 550x675x284
+Indoor:285x770x226
+Outdoor:550x675x284
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 42/19
-Heat (dBA) 40/20
-Outdoor Sound Level (H/SL) Cool (dBA) 49/44
-Heat (dBA) 50/45`,
+Cool (dBA)        42/19
+Heat (dBA)        40/20
+Outdoor Sound Level (H/SL)        Cool (dBA)        49/44
+Heat (dBA)        50/45`,
     model: "FTXM35U",
     price: "$1888+GST",
     promotions: undefined,
@@ -351,22 +351,22 @@ Heat (dBA) 50/45`,
     id: "daikin-alira-35-37kw-heat-pump-ftxm35y",
     name: "Daikin Alira 3.5/3.7kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 3.5 kW
-Heating: 3.7 kW
+    description: `Cooling:  3.5 kW
+Heating:  3.7 kW
 
 Built-in WiFi
 Mould-proof Operation 
 Advanced Air Purification
 
 Dimensions (HxWxD)
-Indoor: 299x920x275
-Outdoor: 550x675x284
+Indoor:299x920x275
+Outdoor:550x675x284
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 42/19
-Heat (dBA) 42/20
-Outdoor Sound Level (H/SL) Cool (dBA) 49/44
-Heat (dBA) 49/45`,
+Cool (dBA)        42/19
+Heat (dBA)        42/20
+Outdoor Sound Level (H/SL)        Cool (dBA)        49/44
+Heat (dBA)        49/45`,
     model: "FTXM35Y",
     price: "$2001+GST",
     promotions: undefined,
@@ -379,20 +379,20 @@ Heat (dBA) 49/45`,
     id: "daikin-standard-50-60kw-heat-pump-ftxv50u",
     name: "Daikin Standard 5.0/6.0kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 5.0 kW
-Heating: 6.0 kW
+    description: `Cooling:  5.0 kW
+Heating:  6.0 kW
 
 Optional WiFi Adaptor
 
 Dimensions (HxWxD)
-Indoor: 295x990x264
-Outdoor: 695x930x350
+Indoor:295x990x264
+Outdoor:695x930x350
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 45/28
-Heat (dBA) 45/28
-Outdoor Sound Level (H/SL) Cool (dBA) 47/44
-Heat (dBA) 48/45`,
+Cool (dBA)        45/28
+Heat (dBA)        45/28
+Outdoor Sound Level (H/SL)        Cool (dBA)        47/44
+Heat (dBA)        48/45`,
     model: "FTXV50U",
     price: "$2125+GST",
     promotions: undefined,
@@ -405,21 +405,20 @@ Heat (dBA) 48/45`,
     id: "daikin-new-cora-50-61kw-heat-pump-ftxm50u",
     name: "Daikin New Cora 5.0/6.1kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 5.0 kW
-Heating: 6.1 kW
+    description: `Cooling:  5.0 kW
+Heating:  6.1 kW
 
 Optional WiFi Adaptor($150)
 
 Dimensions (HxWxD)
-Indoor: 295x990x226
-Outdoor: 695x930x350
+Indoor:295x990x226
+Outdoor:695x930x350
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 45/28
-Heat (dBA) 45/28
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 47/44
-Heat (dBA) 48/45`,
+Cool (dBA)        45/28
+Heat (dBA)        45/28
+Outdoor Sound Level (H/SL)        Cool (dBA)        47/44
+Heat (dBA)        48/45`,
     model: "FTXM50U",
     price: "$2302+GST ",
     promotions: undefined,
@@ -432,22 +431,22 @@ Heat (dBA) 48/45`,
     id: "daikin-alira-50-60kw-heat-pump-with-wifi-ftxm50w",
     name: "Daikin Alira 5.0/6.0kw heat pump with WIFI",
     brand: "Daikin",
-    description: `Cooling: 5.0 kW
-Heating: 6.0 kW
+    description: `Cooling:  5.0 kW
+Heating:  6.0 kW
 
 Built-in WiFi
 Mould-proof Operation 
 Advanced Air Purification
 
 Dimensions (HxWxD)
-Indoor: 299x1100x275
-Outdoor: 695x930x275
+Indoor:299x1100x275
+Outdoor:695x930x275
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 45/28
-Heat (dBA) 45/28
-Outdoor Sound Level (H/SL) Cool (dBA) 47/44
-Heat (dBA) 48/45`,
+Cool (dBA)        45/28
+Heat (dBA)        45/28
+Outdoor Sound Level (H/SL)        Cool (dBA)        47/44
+Heat (dBA)        48/45`,
     model: "FTXM50W",
     price: "$2498+GST",
     promotions: undefined,
@@ -460,20 +459,20 @@ Heat (dBA) 48/45`,
     id: "daikin-standard-60-72kw-heat-pump-ftxv60u",
     name: "Daikin Standard 6.0/7.2kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 6.0kW
-Heating: 7.2kW
+    description: `Cooling:  6.0kW
+Heating:  7.2kW
 
 Optional WiFi Adaptor($150)
 
 Dimensions (HxWxD)
-Indoor: 295x990x263
-Outdoor: 695x930x350
+Indoor:295x990x263
+Outdoor:695x930x350
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 48/29
-Heat (dBA) 48/29
-Outdoor Sound Level (H/SL) Cool (dBA) 49/45
-Heat (dBA) 52/45`,
+Cool (dBA)        48/29
+Heat (dBA)        48/29
+Outdoor Sound Level (H/SL)        Cool (dBA)        49/45
+Heat (dBA)        52/45`,
     model: "FTXV60U",
     price: "$2619+GST",
     promotions: undefined,
@@ -486,21 +485,20 @@ Heat (dBA) 52/45`,
     id: "daikin-new-cora-60-73kw-heat-pump-ftxm60u",
     name: "Daikin New Cora 6.0/7.3kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 6.0 kW
-Heating: 7.3 kW
+    description: `Cooling:  6.0 kW
+Heating:  7.3 kW
 
 Optional WiFi Adaptor($150)
 
 Dimensions (HxWxD)
-Indoor: 295x990x226
-Outdoor: 695x930x350
+Indoor:295x990x226
+Outdoor:695x930x350
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 48/29
-Heat (dBA) 48/29
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 49/45
-Heat (dBA) 52/45`,
+Cool (dBA)        48/29
+Heat (dBA)        48/29
+Outdoor Sound Level (H/SL)        Cool (dBA)        49/45
+Heat (dBA)        52/45`,
     model: "FTXM60U",
     price: "$2714+GST",
     promotions: undefined,
@@ -513,22 +511,22 @@ Heat (dBA) 52/45`,
     id: "daikin-alira-60-72kw-heat-pump-with-wifi-ftxm60w",
     name: "Daikin Alira 6.0/7.2kw heat pump with WiFi",
     brand: "Daikin",
-    description: `Cooling: 6.2 kW
-Heating: 7.3 kW
+    description: `Cooling:  6.2 kW
+Heating:  7.3 kW
 
 Built-in WiFi
 Mould-proof Operation 
 Advanced Air Purification
 
 Dimensions (HxWxD)
-Indoor: 299x1100x275
-Outdoor: 695x930x275
+Indoor:299x1100x275
+Outdoor:695x930x275
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 48/29
-Heat (dBA) 48/29
-Outdoor Sound Level (H/SL) Cool (dBA) 49/45
-Heat (dBA) 52/45`,
+Cool (dBA)        48/29
+Heat (dBA)        48/29
+Outdoor Sound Level (H/SL)        Cool (dBA)        49/45
+Heat (dBA)        52/45`,
     model: "FTXM60W",
     price: "$2838+GST",
     promotions: undefined,
@@ -541,20 +539,20 @@ Heat (dBA) 52/45`,
     id: "daikin-standard-71-80kw-heat-pump-ftxv71u",
     name: "Daikin Standard 7.1/8.0kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 7.1kW
-Heating: 8.0kW
+    description: `Cooling:  7.1kW
+Heating:  8.0kW
 
 Optional WiFi Adaptor($150)
 
 Dimensions (HxWxD)
-Indoor: 295x990x263
-Outdoor: 695x930x350
+Indoor:295x990x263
+Outdoor:695x930x350
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 49/30
-Heat (dBA) 49/30
-Outdoor Sound Level (H/SL) Cool (dBA) 53/49
-Heat (dBA) 54/49`,
+Cool (dBA)        49/30
+Heat (dBA)        49/30
+Outdoor Sound Level (H/SL)        Cool (dBA)        53/49
+Heat (dBA)        54/49`,
     model: "FTXV71U",
     price: "$2995+GST",
     promotions: undefined,
@@ -567,21 +565,20 @@ Heat (dBA) 54/49`,
     id: "daikin-new-cora-71-81kw-heat-pump-ftxm71u",
     name: "Daikin New Cora 7.1/8.1kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 7.1 kW
-Heating: 8.1 kW
+    description: `Cooling:  7.1 kW
+Heating:  8.1 kW
 
 Optional WiFi Adaptor($150)
 
 Dimensions (HxWxD)
-Indoor: 295x990x226
-Outdoor: 695x930x350
+Indoor:295x990x226
+Outdoor:695x930x350
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 49/30
-Heat (dBA) 49/30
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 53/49
-Heat (dBA) 53/49`,
+Cool (dBA)        49/30
+Heat (dBA)        49/30
+Outdoor Sound Level (H/SL)        Cool (dBA)        53/49
+Heat (dBA)        53/49`,
     model: "FTXM71U",
     price: "$3042+GST",
     promotions: undefined,
@@ -594,23 +591,22 @@ Heat (dBA) 53/49`,
     id: "daikin-alira-71-80kw-heat-pump-ftxm71w",
     name: "Daikin Alira 7.1/8.0kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 7.1 kw
-Heating: 8.0 kw
+    description: `Cooling:  7.1 kw
+Heating:  8.0 kw
 
 Built-in WiFi
 Mould-proof Operation 
 Advanced Air Purification
 
 Dimensions (HxWxD)
-Indoor: 299x1100x275
-Outdoor: 695x930x275
+Indoor:299x1100x275
+Outdoor:695x930x275
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 49/30
-Heat (dBA) 49/30
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 53/49
-Heat (dBA) 54/49`,
+Cool (dBA)        49/30
+Heat (dBA)        49/30
+Outdoor Sound Level (H/SL)        Cool (dBA)        53/49
+Heat (dBA)        54/49`,
     model: "FTXM71W",
     price: "$3263+GST",
     promotions: undefined,
@@ -623,21 +619,20 @@ Heat (dBA) 54/49`,
     id: "daikin-standard-80-90kw-heat-pump-ftxv80w",
     name: "Daikin Standard 8.0/9.0kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 8.0 kw
-Heating: 9.0 kw
+    description: `Cooling:  8.0 kw
+Heating:  9.0 kw
 
 Optional WiFi Adaptor($150)
 
 Dimensions (HxWxD)
-Indoor: 329x1240x278
-Outdoor: 990x940x320
+Indoor:329x1240x278
+Outdoor:990x940x320
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 51/37
-Heat (dBA) 51/35
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 54/51
-Heat (dBA) 55/51`,
+Cool (dBA)        51/37
+Heat (dBA)        51/35
+Outdoor Sound Level (H/SL)        Cool (dBA)        54/51
+Heat (dBA)        55/51`,
     model: "FTXV80W",
     price: "$3373+GST",
     promotions: undefined,
@@ -650,23 +645,22 @@ Heat (dBA) 55/51`,
     id: "daikin-alira-85-90kw-heat-pump-ftxm85w",
     name: "Daikin Alira 8.5/9.0kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 8.5 kw
-Heating: 9.0 kw
+    description: `Cooling:  8.5 kw
+Heating:  9.0 kw
 
 Built-in WiFi
 Mould-proof Operation 
 Advanced Air Purification
 
 Dimensions (HxWxD)
-Indoor: 329x1240x278
-Outdoor: 990x940x320
+Indoor:329x1240x278
+Outdoor:990x940x320
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 49/35
-Heat (dBA) 49/33
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 54/51
-Heat (dBA) 55/51`,
+Cool (dBA)        49/35
+Heat (dBA)        49/33
+Outdoor Sound Level (H/SL)        Cool (dBA)        54/51
+Heat (dBA)        55/51`,
     model: "FTXM85W",
     price: "$3456+GST ",
     promotions: undefined,
@@ -679,21 +673,20 @@ Heat (dBA) 55/51`,
     id: "daikin-standard-90-103-kw-heat-pump-ftxv90w",
     name: "Daikin Standard 9.0/10.3 kw Heat Pump",
     brand: "Daikin",
-    description: `Cooling: 9.0 kw
-Heating: 10.3 kw
+    description: `Cooling:  9.0 kw
+Heating:  10.3 kw
 
 Optional WiFi Adaptor($150)
 
 Dimensions (HxWxD)
-Indoor: 329x1240x278
-Outdoor: 990x940x320
+Indoor:329x1240x278
+Outdoor:990x940x320
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 51/37
-Heat (dBA) 51/35
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 54/51
-Heat (dBA) 55/51`,
+Cool (dBA)        51/37
+Heat (dBA)        51/35
+Outdoor Sound Level (H/SL)        Cool (dBA)        54/51
+Heat (dBA)        55/51`,
     model: "FTXV90W",
     price: "$3977+gst",
     promotions: undefined,
@@ -706,20 +699,20 @@ Heat (dBA) 55/51`,
     id: "daikin-alira-95-103kw-heat-pump-with-wifi-ftxm95w",
     name: "Daikin Alira 9.5/10.3kw Heat pump with WiFi",
     brand: "Daikin",
-    description: `Cooling: 9.5 kw
-Heating: 10.3 kw
+    description: `Cooling:  9.5 kw
+Heating:  10.3 kw
 
 Built-in WiFi
 Mould-proof Operation 
 Advanced Air Purification
 
 Dimensions (HxWxD)
-Indoor: 329x1240x278
-Outdoor: 990x940x320
+Indoor:329x1240x278
+Outdoor:990x940x320
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 49/35
-Heat (dBA) 49/33
+Cool (dBA)        49/35
+Heat (dBA)        49/33
 Outdoor Sound Level (H/SL)`,
     model: "FTXM95W",
     price: "$4052+gst",
@@ -733,19 +726,18 @@ Outdoor Sound Level (H/SL)`,
     id: "daikin-lite-25-30kw-heat-pump-ftxf25wvma",
     name: "Daikin Lite 2.5/3.0kw Heat pump",
     brand: "Daikin",
-    description: `Cooling: 2.50 kW
-Heating: 3.20 kW
+    description: `Cooling:  2.50 kW
+Heating:  3.20 kW
 
 Dimensions (HxWxD)
-Indoor: 285x770x284
-Outdoor: 550x675x284
+Indoor:285x770x284
+Outdoor:550x675x284
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 40/19
-Heat (dBA) 40/20
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 47/43
-Heat (dBA) 48/44`,
+Cool (dBA)        40/19
+Heat (dBA)        40/20
+Outdoor Sound Level (H/SL)        Cool (dBA)        47/43
+Heat (dBA)        48/44`,
     model: "FTXF25WVMA",
     price: "$1587+GST",
     promotions: undefined,
@@ -758,19 +750,18 @@ Heat (dBA) 48/44`,
     id: "daikin-lite-35-37kw-heat-pump-ftxf35wvma",
     name: "Daikin Lite 3.5/3.7kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 3.5 kW
-Heating: 3.7 kW
+    description: `Cooling:  3.5 kW
+Heating:  3.7 kW
 
 Dimensions (HxWxD)
-Indoor: 285x770x284
-Outdoor: 550x675x284
+Indoor:285x770x284
+Outdoor:550x675x284
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 42/19
-Heat (dBA) 42/20
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 48/43
-Heat (dBA) 49/45`,
+Cool (dBA)        42/19
+Heat (dBA)        42/20
+Outdoor Sound Level (H/SL)        Cool (dBA)        48/43
+Heat (dBA)        49/45`,
     model: "FTXF35WVMA",
     price: "$1667+GST",
     promotions: undefined,
@@ -783,19 +774,18 @@ Heat (dBA) 49/45`,
     id: "daikin-lite-50-52kw-heat-pump-ftxf50w",
     name: "Daikin Lite 5.0/5.2kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 5.0 kW
-Heating: 5.2 kW
+    description: `Cooling:  5.0 kW
+Heating:  5.2 kW
 
 Dimensions (HxWxD)
-Indoor: 295x990x263
-Outdoor: 595x845x300
+Indoor:295x990x263
+Outdoor:595x845x300
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 45/28
-Heat (dBA) 45/28
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 47/44
-Heat (dBA) 50/46`,
+Cool (dBA)        45/28
+Heat (dBA)        45/28
+Outdoor Sound Level (H/SL)        Cool (dBA)        47/44
+Heat (dBA)        50/46`,
     model: "FTXF50W",
     price: "$2058+GST",
     promotions: undefined,
@@ -808,19 +798,18 @@ Heat (dBA) 50/46`,
     id: "daikin-lite-60-65kw-heat-pump-ftxf60w",
     name: "Daikin Lite 6.0/6.5kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 6.0 kW
-Heating: 6.5 kW
+    description: `Cooling:  6.0 kW
+Heating:  6.5 kW
 
 Dimensions (HxWxD)
-Indoor: 295x990x263
-Outdoor: 595x845x300
+Indoor:295x990x263
+Outdoor:595x845x300
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 46/29
-Heat (dBA) 46/29
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 49/46
-Heat (dBA) 51/47`,
+Cool (dBA)        46/29
+Heat (dBA)        46/29
+Outdoor Sound Level (H/SL)        Cool (dBA)        49/46
+Heat (dBA)        51/47`,
     model: "FTXF60W",
     price: "$2519+GST",
     promotions: undefined,
@@ -833,19 +822,18 @@ Heat (dBA) 51/47`,
     id: "daikin-lite-71-80kw-heat-pump-ftxf71wvma",
     name: "Daikin Lite 7.1/8.0kw heat pump",
     brand: "Daikin",
-    description: `Cooling: 7.1 kW
-Heating: 8.0 kW
+    description: `Cooling:  7.1 kW
+Heating:  8.0 kW
 
 Dimensions (HxWxD)
-Indoor: 295x990x263
-Outdoor: 695x930x350
+Indoor:295x990x263
+Outdoor:695x930x350
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 49/30
-Heat (dBA) 49/30
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 43/47
-Heat (dBA) 54/49`,
+Cool (dBA)        49/30
+Heat (dBA)        49/30
+Outdoor Sound Level (H/SL)        Cool (dBA)        43/47
+Heat (dBA)        54/49`,
     model: "FTXF71WVMA",
     price: "$2856+GST",
     promotions: undefined,
@@ -991,8 +979,8 @@ Outdoor max : 67 dBA
     id: "daikin-zena-25-32-black-colour-with-wifi-ftxj25t-k",
     name: "Daikin Zena 2.5/3.2 Black colour with WiFi",
     brand: "Daikin",
-    description: `Cooling: 2.5 kw
-Heating: 3.2 kw
+    description: `Cooling:  2.5 kw
+Heating:  3.2 kw
 
 Program Dry Function
 Heavy duty Purification
@@ -1000,15 +988,14 @@ Ultra Compact
 Super Quiet 
 
 Dimensions (HxWxD)
-Indoor: 295x798x185
-Outdoor: 550x675x284
+Indoor:295x798x185
+Outdoor:550x675x284
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 40/19
-Heat (dBA) 41/19
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 47/43
-Heat (dBA) 48/44`,
+Cool (dBA)        40/19
+Heat (dBA)        41/19
+Outdoor Sound Level (H/SL)        Cool (dBA)        47/43
+Heat (dBA)        48/44`,
     model: "FTXJ25T-K",
     price: "$2038+GST",
     promotions: undefined,
@@ -1021,8 +1008,8 @@ Heat (dBA) 48/44`,
     id: "daikin-zena-35-37kw-black-colour-with-wifi-ftxj35t",
     name: "Daikin Zena 3.5/3.7kw Black colour with WiFi",
     brand: "Daikin",
-    description: `Cooling: 3.5 kw
-Heating: 3.7 kw
+    description: `Cooling:  3.5 kw
+Heating:  3.7 kw
 
 Program Dry Function
 Heavy duty Purification
@@ -1030,15 +1017,14 @@ Ultra Compact
 Super Quiet 
 
 Dimensions (HxWxD)
-Indoor: 295x798x185
-Outdoor: 550x675x284
+Indoor:295x798x185
+Outdoor:550x675x284
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 42/20
-Heat (dBA) 42/20
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 49/44
-Heat (dBA) 49/45`,
+Cool (dBA)        42/20
+Heat (dBA)        42/20
+Outdoor Sound Level (H/SL)        Cool (dBA)        49/44
+Heat (dBA)        49/45`,
     model: "FTXJ35T",
     price: "$2279+GST",
     promotions: undefined,
@@ -1051,8 +1037,8 @@ Heat (dBA) 49/45`,
     id: "daikin-zena-50-60kw-black-colour-with-wifi-ftxj50t",
     name: "Daikin Zena 5.0/6.0kw Black colour with WiFi",
     brand: "Daikin",
-    description: `Cooling: 5.0 kw
-Heating: 6.0 kw
+    description: `Cooling:  5.0 kw
+Heating:  6.0 kw
 
 Program Dry Function
 Heavy duty Purification
@@ -1060,15 +1046,14 @@ Ultra Compact
 Super Quiet 
 
 Dimensions (HxWxD)
-Indoor: 295x798x185
-Outdoor: 695x930x350
+Indoor:295x798x185
+Outdoor:695x930x350
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 45/32
-Heat (dBA) 45/32
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 47/44
-Heat (dBA) 48/45`,
+Cool (dBA)        45/32
+Heat (dBA)        45/32
+Outdoor Sound Level (H/SL)        Cool (dBA)        47/44
+Heat (dBA)        48/45`,
     model: "FTXJ50T",
     price: "$2720+GST",
     promotions: undefined,
@@ -1081,8 +1066,8 @@ Heat (dBA) 48/45`,
     id: "daikin-zena-60-72kw-black-colour-with-wifi-ftxj60t-k",
     name: "Daikin Zena 6.0/7.2kw Black colour with WiFi",
     brand: "Daikin",
-    description: `Cooling: 6.0 kw
-Heating: 7.2 kw
+    description: `Cooling:  6.0 kw
+Heating:  7.2 kw
 
 Program Dry Function
 Heavy duty Purification
@@ -1090,15 +1075,14 @@ Ultra Compact
 Super Quiet 
 
 Dimensions (HxWxD)
-Indoor: 295x798x185
-Outdoor: 695x930x350
+Indoor:295x798x185
+Outdoor:695x930x350
 
 Indoor Sound Level (H/SL)
-Cool (dBA) 48/33
-Heat (dBA) 48/33
-Outdoor Sound Level (H/SL) 
-Cool (dBA) 49/45
-Heat (dBA) 52/45`,
+Cool (dBA)        48/33
+Heat (dBA)        48/33
+Outdoor Sound Level (H/SL)        Cool (dBA)        49/45
+Heat (dBA)        52/45`,
     model: "FTXJ60T-K",
     price: "$3089+GST",
     promotions: undefined,
@@ -1587,7 +1571,7 @@ With Dual Barrier Coating that prevents dust and dirt build-up on the inner surf
     id: "mitsubish-electric-gs25-25-31kwheat-pump-msz-gs25vfd",
     name: "Mitsubish Electric GS25 2.5/3.1kwHeat Pump",
     brand: "Mitsubishi",
-    description: `Cooling: 2.5 kW, Heating: 3.1 kW
+    description: `Cooling:  2.5 kW, Heating:  3.1 kW
 
 optional upgrades, from Wi-Fi Control`,
     model: "MSZ-GS25VFD",
@@ -1602,7 +1586,7 @@ optional upgrades, from Wi-Fi Control`,
     id: "mitsubish-electric-gs580-78-90kwheat-pump-msz-gs80vfd",
     name: "Mitsubish Electric GS580 7.8/9.0kwHeat Pump",
     brand: "Mitsubishi",
-    description: `Cooling: 7.8 kW, Heating: 9.0 kW
+    description: `Cooling:  7.8 kW, Heating:  9.0 kW
 
 optional upgrades, from Wi-Fi Control`,
     model: "MSZ-GS80VFD",
@@ -1624,8 +1608,8 @@ Noise indoor max: 40dBA
 Outdoor max: 51dBA
 
 Dimension 
-Indoor: 292x805x200
-Outdoor: 800x553x275`,
+Indoor:292x805x200
+Outdoor:800x553x275`,
     model: "AS35PBDHRA-SET",
     price: "$1504+GST",
     promotions: undefined,
@@ -1647,7 +1631,7 @@ Outdoor max: 51dBA
 
 Dimension 
 Indoor:292x805x200
-Outdoor: 800x553x275`,
+Outdoor:800x553x275`,
     model: "AS26PBDHRA-SET",
     price: "$1455+GST",
     promotions: undefined,
@@ -1711,8 +1695,8 @@ Noise indoor max: 47dBA
 Outdoor max: 66dBA
 
 Dimension 
-Indoor: 320x970x220
-Outdoor: 890x705x340`,
+Indoor:320x970x220
+Outdoor:890x705x340`,
     model: "AS53PDDHRA-SET",
     price: "$2080+GST",
     promotions: undefined,
@@ -1732,8 +1716,8 @@ Noise indoor max: 48dBA
 Outdoor max: 67dBA
 
 Dimension 
-Indoor: 320x970x220
-Outdoor: 890x705x340`,
+Indoor:320x970x220
+Outdoor:890x705x340`,
     model: "AS71PDDHRA-SET",
     price: "$2381+GST",
     promotions: undefined,
@@ -1834,7 +1818,7 @@ Outdoor:705x890x340`,
     id: "lg-standard-63-73-kw-high-wall-ws24wu",
     name: "LG STANDARD 6.3/7.3 KW HIGH WALL",
     brand: "LG",
-    description: `Cooling: 6.3kw, Heating: 7.3kw
+    description: `Cooling:  6.3kw, Heating:  7.3kw
 
 Built in Wi-Fi so you can control your Air Conditioner remotely
 
@@ -1875,7 +1859,7 @@ Plasmaster™ Ioniser Plus
     id: "lg-deluxe-94-103kw-high-wall-wh34sr",
     name: "LG Deluxe 9.4/10.3KW High Wall",
     brand: "LG",
-    description: `Cooling: 9.4kw, Heating:10.3kw
+    description: `Cooling:  9.4kw, Heating:10.3kw
 
 Key Features
 Built-in Wi-Fi Smart Control
@@ -1895,7 +1879,7 @@ Plasmaster™ Ioniser Plus
     id: "lg-standard-26kw---32kw-high-wall-ws09tws",
     name: "LG STANDARD 2.6KW / 3.2KW HIGH WALL",
     brand: "LG",
-    description: `Cooling: 2.6kw, Heating: 3.3kw
+    description: `Cooling:  2.6kw, Heating:  3.3kw
 
 Built in Wi-Fi so you can control your Air Conditioner remotely
 
@@ -1916,7 +1900,7 @@ Google Assistant
     id: "lg-standard-34-40-kw-high-wall-ws12twn",
     name: "LG STANDARD 3.4/4.0 Kw HIGH WALL",
     brand: "LG",
-    description: `Cooling: 3.4kw, Heating: 4.0kw
+    description: `Cooling:  3.4kw, Heating:  4.0kw
 
 Built in Wi-Fi so you can control your Air Conditioner remotely
 
@@ -1939,7 +1923,7 @@ Google Assistant
     brand: "LG",
     description: `$2179+GST incl Standard back-to-back Installation within 3 meters 
 
-Cooling: 4.8kw, Heating: 5.9kw
+Cooling:  4.8kw, Heating:  5.9kw
 
 Built in Wi-Fi so you can control your Air Conditioner remotely
 
