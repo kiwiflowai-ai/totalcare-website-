@@ -20,7 +20,7 @@ export default function Contact() {
     lastName: '',
     email: '',
     phone: '',
-    propertyType: '',
+    serviceType: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,7 +45,7 @@ export default function Contact() {
         lastName: formData.lastName,
         email: formData.email,
         phone: formData.phone,
-        propertyType: formData.propertyType,
+        serviceType: formData.serviceType,
         message: formData.message,
         timestamp: new Date().toISOString(),
         source: 'contact_page_form'
@@ -81,7 +81,7 @@ export default function Contact() {
           lastName: '',
           email: '',
           phone: '',
-          propertyType: '',
+          serviceType: '',
           message: ''
         });
       } else {
@@ -188,19 +188,20 @@ export default function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="propertyType">Property Type *</Label>
+                    <Label htmlFor="serviceType">Service Type *</Label>
                     <select 
-                      id="propertyType" 
-                      name="propertyType"
-                      value={formData.propertyType}
+                      id="serviceType" 
+                      name="serviceType"
+                      value={formData.serviceType}
                       onChange={handleInputChange}
                       className="w-full px-3 py-2 border border-border rounded-md bg-background"
                       required
                     >
-                      <option value="">Select property type</option>
-                      <option value="residential">Residential Home</option>
-                      <option value="apartment">Apartment</option>
-                      <option value="commercial">Commercial Building</option>
+                      <option value="">Select service type</option>
+                      <option value="heating-cooling">Heating & Cooling Installation</option>
+                      <option value="air-conditioning">Air Conditioning Services</option>
+                      <option value="electrical">Electrical Services</option>
+                      <option value="maintenance">Maintenance & Repairs</option>
                       <option value="other">Other</option>
                     </select>
                   </div>

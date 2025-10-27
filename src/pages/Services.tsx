@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Phone, MapPin, Mail, Clock, MessageSquare, QrCode, Zap, Settings, CheckCircle, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Supabase WhatsApp image URL
 const whatsappSc1 = 'https://qivobmyugolhzrimfuht.supabase.co/storage/v1/object/public/product%20images/whatsapp/sc1.JPEG';
@@ -66,14 +67,18 @@ export default function Services() {
             From residential installations to commercial projects, we deliver safe, reliable, and efficient electrical solutions across Auckland.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-              <Phone className="w-5 h-5 mr-2" />
-              Call +64 27 750 0999
-            </Button>
-            <Button size="lg" variant="outline">
-              <MessageSquare className="w-5 h-5 mr-2" />
-              Get Free Quote
-            </Button>
+            <a href="tel:+64277500999">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Phone className="w-5 h-5 mr-2" />
+                Call +64 27 750 0999
+              </Button>
+            </a>
+            <Link to="/contact">
+              <Button size="lg" variant="outline">
+                <MessageSquare className="w-5 h-5 mr-2" />
+                Get Free Quote
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
