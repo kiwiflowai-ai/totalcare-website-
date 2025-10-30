@@ -247,7 +247,7 @@ export default function Contact() {
 
         {/* Why Choose Us Section */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold text-foreground text-center mb-8">Why Choose TotalCare Electrician?</h2>
+          <h2 className="text-2xl font-bold text-foreground text-center mb-8">Why Choose Totalcare Electrical & HVAC LTD?</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="text-center p-6">
               <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">

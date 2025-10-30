@@ -38,7 +38,7 @@ export function Features() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Why Choose TotalCare Electrician?
+              Why Choose Totalcare Electrical & HVAC LTD?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We're Auckland's most trusted heat pump specialists, delivering exceptional 

@@ -16,7 +16,7 @@ const testimonials = [
     name: "Sarah & Mike Thompson",
     location: "North Shore, Auckland",
     rating: 5,
-    text: "Outstanding service! TotalCare installed our heat pump system and the difference is incredible. Professional, punctual, and the quality of work is exceptional.",
+    text: "Outstanding service! Totalcare Electrical & HVAC LTD installed our heat pump system and the difference is incredible. Professional, punctual, and the quality of work is exceptional.",
     project: "Heat Pump Installation"
   },
   {
@@ -30,7 +30,7 @@ const testimonials = [
     name: "Lisa & James Wilson",
     location: "West Auckland",
     rating: 5,
-    text: "From consultation to completion, TotalCare exceeded our expectations. Their attention to detail and customer service is second to none.",
+    text: "From consultation to completion, Totalcare Electrical & HVAC LTD exceeded our expectations. Their attention to detail and customer service is second to none.",
     project: "Complete Electrical Renovation"
   },
   {

@@ -6,7 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Header } from '@/components/Header';
 import { QuoteModal } from '@/components/QuoteModal';
-import { getProducts, Product } from '@/data/products';
+import { getProducts, getProductById, Product } from '@/data/products';
 import { supabase } from '@/lib/supabase';
 
 interface ProductImages {
@@ -58,8 +58,7 @@ function ProductDetail() {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const products = await getProducts();
-        const foundProduct = products.find(p => p.id === productId);
+        const foundProduct = productId ? await getProductById(productId) : null;
         
         if (foundProduct) {
           setProduct(foundProduct);
@@ -568,6 +567,13 @@ function ProductDetail() {
                       <span className="text-sm font-medium">Model:</span>
                       <span className="text-sm font-mono">{product.model}</span>
                     </div>
+                    {product.warranty && (
+                      <div className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-sm font-medium">Warranty:</span>
+                        <span className="text-sm">{product.warranty}</span>
+                      </div>
+                    )}
                   </div>
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">

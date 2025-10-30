@@ -13,6 +13,8 @@ export interface Product {
   series: string
   image: string
   promotions?: string
+  warranty?: string
+  is_featured?: boolean
   created_at?: string
   updated_at?: string
 }

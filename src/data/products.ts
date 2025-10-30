@@ -58,15 +58,22 @@ export async function getProducts(): Promise<Product[]> {
 
     console.log('Fetching products from Supabase...');
     
+    // For the grid view, fetch only lightweight fields (exclude large product_images/description)
     const { data, error } = await supabase
       .from('products')
-      .select('*')
+      .select('id,name,brand,model,price,cooling_capacity,heating_capacity,has_wifi,series,image,product_images,is_featured')
       .order('created_at', { ascending: false });
 
     console.log('Supabase response:', { data, error });
 
     if (error) {
-      console.error('Error fetching products:', error);
+      console.error('❌ Supabase Error Details:', {
+        message: error.message,
+        details: error.details,
+        hint: error.hint,
+        code: error.code
+      });
+      console.warn('⚠️ Using fallback products due to Supabase error');
       return products;
     }
 
@@ -100,6 +107,19 @@ export async function getProducts(): Promise<Product[]> {
         console.log('========================');
       }
       
+      // Normalize product_images which may be stored as text or array
+      let normalizedImages: string[] = [];
+      if (Array.isArray(product.product_images)) {
+        normalizedImages = product.product_images as string[];
+      } else if (typeof product.product_images === 'string') {
+        try {
+          const parsed = JSON.parse(product.product_images);
+          if (Array.isArray(parsed)) normalizedImages = parsed;
+        } catch {}
+      }
+
+      const fallbackFirstImage = normalizedImages.length > 0 ? normalizedImages[0] : '';
+
       return {
         id: product.id,
         name: product.name,
@@ -112,8 +132,9 @@ export async function getProducts(): Promise<Product[]> {
         heatingCapacity: product.heating_capacity || '',
         hasWifi: product.has_wifi || false,
         series: product.series || '',
-        image: product.image || '',
-        product_images: product.product_images || [],
+        image: (product.image && product.image.trim() !== '') ? product.image : (fallbackFirstImage || ''),
+        // keep product_images minimal but available for fallback logic on the grid
+        product_images: normalizedImages,
         warranty: product.warranty || '',
         isFeatured: product.is_featured || false
       };
@@ -130,6 +151,43 @@ export async function getProducts(): Promise<Product[]> {
   } catch (error) {
     console.error('Error fetching products:', error);
     return products;
+  }
+}
+
+// Fetch a single product by id with full fields
+export async function getProductById(productId: string): Promise<Product | null> {
+  try {
+    if (!isSupabaseConfigured()) {
+      return products.find(p => p.id === productId) || null;
+    }
+
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('id', productId)
+      .single();
+
+    if (error || !data) return products.find(p => p.id === productId) || null;
+
+    return {
+      id: data.id,
+      name: data.name,
+      brand: data.brand,
+      description: data.description || '',
+      model: data.model || '',
+      price: data.price || '',
+      promotions: (data.promotions && data.promotions !== '[]' && data.promotions.trim() !== '') ? data.promotions : '',
+      coolingCapacity: data.cooling_capacity || '',
+      heatingCapacity: data.heating_capacity || '',
+      hasWifi: data.has_wifi || false,
+      series: data.series || '',
+      image: data.image || '',
+      product_images: data.product_images || [],
+      warranty: data.warranty || '',
+      isFeatured: data.is_featured || false
+    };
+  } catch {
+    return products.find(p => p.id === productId) || null;
   }
 }
 

@@ -15,7 +15,7 @@ export function Footer() {
                 <span className="text-white font-bold text-xl">TC</span>
               </div>
               <div>
-                <h3 className="text-xl font-bold">TotalCare Electrician</h3>
+                <h3 className="text-xl font-bold">Totalcare Electrical & HVAC LTD</h3>
                 <p className="text-background/70">Your trusted heat pump specialists</p>
               </div>
             </div>
@@ -67,7 +67,7 @@ export function Footer() {
 
         <div className="border-t border-background/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-background/60 text-sm">
-            © 2024 TotalCare Electrician. Licensed & Insured. All rights reserved.
+            © 2024 Totalcare Electrical & HVAC LTD. Licensed & Insured. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-background/60">
             <Link to="/terms" className="hover:text-background transition-colors text-base font-semibold text-background/80 hover:text-background">Terms of Service</Link>

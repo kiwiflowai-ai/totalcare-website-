@@ -79,6 +79,20 @@ export default function Products() {
     }
   }, [searchParams]);
 
+  // Update URL when category changes
+  useEffect(() => {
+    const currentCategory = searchParams.get('category');
+    if (selectedCategory === 'all' && currentCategory) {
+      // Remove category param when "all" is selected
+      searchParams.delete('category');
+      setSearchParams(searchParams, { replace: true });
+    } else if (selectedCategory !== 'all' && currentCategory !== selectedCategory) {
+      // Update category param
+      searchParams.set('category', selectedCategory);
+      setSearchParams(searchParams, { replace: true });
+    }
+  }, [selectedCategory]);
+
   const filteredProducts = useMemo(() => {
     console.log('Filtering products:', {
       totalProducts: products.length,
@@ -143,8 +157,13 @@ export default function Products() {
     }
 
 
-    // Sort
+    // Sort - Featured products always come first
     filtered.sort((a, b) => {
+      // Featured products always come first
+      if (a.isFeatured && !b.isFeatured) return -1;
+      if (!a.isFeatured && b.isFeatured) return 1;
+      
+      // If both featured or both not featured, apply regular sorting
       switch (sortBy) {
         case 'price-low':
           return parseInt(a.price.replace(/[^0-9]/g, '')) - parseInt(b.price.replace(/[^0-9]/g, ''));

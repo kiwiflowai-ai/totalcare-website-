@@ -57,7 +57,12 @@ export function ProductCardNew({ product }: ProductCardNewProps) {
           return img.replace(/\\"/g, '"').replace(/\\\\/g, '\\');
         }
         return img;
-      }).filter(img => img && img.startsWith('data:image/'));
+      }).filter(img => img && (
+        img.startsWith('data:image/') ||
+        img.startsWith('/') ||
+        img.startsWith('http') ||
+        img.startsWith('src/')
+      ));
       
       console.log(`🧹 Cleaned ${cleanedImages.length} valid images for ${product.name}`);
       
@@ -86,6 +91,7 @@ export function ProductCardNew({ product }: ProductCardNewProps) {
             src={displayImage}
             alt={`Auckland heat pump installation - ${product.name} by ${product.brand}`}
             className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
+            loading="lazy"
             onLoad={() => {
               console.log(`✅ Image loaded successfully for ${product.name}`);
             }}
