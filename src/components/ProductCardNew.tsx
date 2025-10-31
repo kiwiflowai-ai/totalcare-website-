@@ -17,62 +17,19 @@ export function ProductCardNew({ product }: ProductCardNewProps) {
 
   // Helper function to get the best available image
   const getProductImage = () => {
-    console.log(`🔍 DEBUGGING PRODUCT: ${product.name}`, {
-      id: product.id,
-      hasCoverImage: !!product.image,
-      coverImageLength: product.image?.length || 0,
-      coverImagePreview: product.image?.substring(0, 50) + '...',
-      hasProductImages: !!product.product_images,
-      productImagesType: typeof product.product_images,
-      productImagesLength: product.product_images?.length || 0
-    });
-    
-    // First try the cover image
+    // First try the cover image (already processed from Supabase)
     if (product.image && product.image.trim() !== '') {
-      console.log(`✅ Using cover image for ${product.name}`);
-      return product.image;
+      return product.image.trim();
     }
     
-    // Fallback to first product image if cover image is not available
-    if (product.product_images) {
-      let productImagesArray = [];
-      
-      // Parse product_images if it's a JSON string
-      if (typeof product.product_images === 'string') {
-        try {
-          productImagesArray = JSON.parse(product.product_images);
-          console.log(`📦 Parsed ${productImagesArray.length} images from JSON for ${product.name}`);
-        } catch (error) {
-          console.error(`❌ Error parsing product_images JSON for ${product.name}:`, error);
-          productImagesArray = [];
-        }
-      } else if (Array.isArray(product.product_images)) {
-        productImagesArray = product.product_images;
-        console.log(`📦 Using ${productImagesArray.length} images from array for ${product.name}`);
-      }
-      
-      // Clean up the base64 strings (remove any extra escape characters)
-      const cleanedImages = productImagesArray.map(img => {
-        if (typeof img === 'string') {
-          return img.replace(/\\"/g, '"').replace(/\\\\/g, '\\');
-        }
-        return img;
-      }).filter(img => img && (
-        img.startsWith('data:image/') ||
-        img.startsWith('/') ||
-        img.startsWith('http') ||
-        img.startsWith('src/')
-      ));
-      
-      console.log(`🧹 Cleaned ${cleanedImages.length} valid images for ${product.name}`);
-      
-      if (cleanedImages.length > 0) {
-        console.log(`🔄 Using first product image for ${product.name}`);
-        return cleanedImages[0];
+    // Fallback to first product image
+    if (product.product_images && Array.isArray(product.product_images) && product.product_images.length > 0) {
+      const firstImage = product.product_images[0];
+      if (firstImage && typeof firstImage === 'string' && firstImage.trim() !== '') {
+        return firstImage.trim();
       }
     }
     
-    console.log(`❌ No image available for ${product.name}`);
     return null;
   };
 

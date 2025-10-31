@@ -58,10 +58,10 @@ export async function getProducts(): Promise<Product[]> {
 
     console.log('Fetching products from Supabase...');
     
-    // For the grid view, fetch only lightweight fields (exclude large product_images/description)
+    // Fetch all product fields needed for display
     const { data, error } = await supabase
       .from('products')
-      .select('id,name,brand,model,price,cooling_capacity,heating_capacity,has_wifi,series,image,product_images,is_featured')
+      .select('id,name,brand,model,price,description,cooling_capacity,heating_capacity,has_wifi,series,image,product_images,promotions,warranty')
       .order('created_at', { ascending: false });
 
     console.log('Supabase response:', { data, error });
@@ -111,14 +111,23 @@ export async function getProducts(): Promise<Product[]> {
       let normalizedImages: string[] = [];
       if (Array.isArray(product.product_images)) {
         normalizedImages = product.product_images as string[];
-      } else if (typeof product.product_images === 'string') {
+      } else if (typeof product.product_images === 'string' && product.product_images.trim() !== '') {
         try {
           const parsed = JSON.parse(product.product_images);
           if (Array.isArray(parsed)) normalizedImages = parsed;
-        } catch {}
+        } catch {
+          // If parsing fails, try treating it as a single image path
+          normalizedImages = [product.product_images];
+        }
       }
 
-      const fallbackFirstImage = normalizedImages.length > 0 ? normalizedImages[0] : '';
+      // Get the best image: prefer cover image, fallback to first product_image
+      let bestImage = '';
+      if (product.image && product.image.trim() !== '') {
+        bestImage = product.image.trim();
+      } else if (normalizedImages.length > 0) {
+        bestImage = normalizedImages[0];
+      }
 
       return {
         id: product.id,
@@ -132,11 +141,10 @@ export async function getProducts(): Promise<Product[]> {
         heatingCapacity: product.heating_capacity || '',
         hasWifi: product.has_wifi || false,
         series: product.series || '',
-        image: (product.image && product.image.trim() !== '') ? product.image : (fallbackFirstImage || ''),
-        // keep product_images minimal but available for fallback logic on the grid
+        image: bestImage,
         product_images: normalizedImages,
         warranty: product.warranty || '',
-        isFeatured: product.is_featured || false
+        isFeatured: false // Default to false if column doesn't exist
       };
     });
 
