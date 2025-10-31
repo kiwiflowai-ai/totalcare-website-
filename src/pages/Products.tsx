@@ -95,8 +95,14 @@ export default function Products() {
     if (selectedCategory === 'ev-chargers') {
       filtered = products.filter(product => {
         const brand = (product.brand || '').trim().toLowerCase();
-        return brand === 'wallbox' || brand === 'tesla';
+        const isEVCharger = brand === 'wallbox' || brand === 'tesla';
+        return isEVCharger;
       });
+      if (import.meta.env.DEV && filtered.length === 0) {
+        // Debug: Check available brands when no EV chargers found
+        const allBrands = [...new Set(products.map(p => (p.brand || '').trim().toLowerCase()))];
+        console.log('🔍 EV Charger filter - No products found. Available brands:', allBrands);
+      }
     } else if (selectedCategory === 'heat-pumps') {
       filtered = products.filter(product => {
         const brand = (product.brand || '').trim().toLowerCase();
