@@ -58,45 +58,50 @@ export default function Products() {
     loadData();
   }, []);
 
-  // Handle URL parameters
+  // Handle URL parameters - sync on mount and when URL changes
   useEffect(() => {
     const category = searchParams.get('category');
     if (category === 'ev-chargers') {
       setSelectedCategory('ev-chargers');
     } else if (category === 'heat-pumps') {
       setSelectedCategory('heat-pumps');
-    } else {
-      // Default to showing all products (both categories)
+    } else if (!category) {
+      // Only set to 'all' if no category param exists
       setSelectedCategory('all');
     }
   }, [searchParams]);
 
-  // Update URL when category changes
+  // Update URL when category changes (but not from URL param reads)
   useEffect(() => {
     const currentCategory = searchParams.get('category');
+    // Only update URL if category state doesn't match URL param
     if (selectedCategory === 'all' && currentCategory) {
       // Remove category param when "all" is selected
-      searchParams.delete('category');
-      setSearchParams(searchParams, { replace: true });
+      const newParams = new URLSearchParams(searchParams);
+      newParams.delete('category');
+      setSearchParams(newParams, { replace: true });
     } else if (selectedCategory !== 'all' && currentCategory !== selectedCategory) {
       // Update category param
-      searchParams.set('category', selectedCategory);
-      setSearchParams(searchParams, { replace: true });
+      const newParams = new URLSearchParams(searchParams);
+      newParams.set('category', selectedCategory);
+      setSearchParams(newParams, { replace: true });
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, searchParams, setSearchParams]);
 
   const filteredProducts = useMemo(() => {
     let filtered = products;
 
-    // Category filter
+    // Category filter - use case-insensitive matching and trim whitespace
     if (selectedCategory === 'ev-chargers') {
-      filtered = products.filter(product => 
-        product.brand === 'Wallbox' || product.brand === 'Tesla'
-      );
+      filtered = products.filter(product => {
+        const brand = (product.brand || '').trim().toLowerCase();
+        return brand === 'wallbox' || brand === 'tesla';
+      });
     } else if (selectedCategory === 'heat-pumps') {
-      filtered = products.filter(product => 
-        product.brand !== 'Wallbox' && product.brand !== 'Tesla'
-      );
+      filtered = products.filter(product => {
+        const brand = (product.brand || '').trim().toLowerCase();
+        return brand !== 'wallbox' && brand !== 'tesla';
+      });
     }
 
     // Search filter (use debounced value)
