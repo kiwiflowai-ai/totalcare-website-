@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, Thermometer, Wifi, Zap, Settings, CheckCircle, MessageSquare, Images, FileText } from 'lucide-react';
+import { ArrowLeft, Thermometer, Wifi, Zap, Settings, MessageSquare, Images, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -603,44 +603,6 @@ function ProductDetail() {
                 </CardContent>
               </Card>
             )}
-
-            {/* Features */}
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5" />
-                  Key Features
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                    <span className="text-sm">Energy Efficient</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                    <span className="text-sm">Quiet Operation</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                    <span className="text-sm">Professional Installation</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                    <span className="text-sm">Warranty Included</span>
-                  </div>
-                  {product.hasWifi && (
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm">Smart WiFi Control</span>
-                    </div>
-                  )}
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                    <span className="text-sm">Free Installation Quote</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
 
             {/* Terms and Conditions Link */}
             <Card className="bg-primary/5 border-primary/20">
