@@ -10,6 +10,7 @@ import { Footer } from '@/components/Footer';
 import { getProducts, getBrands, getProductSeries, getPriceRanges, Product } from '@/data/products';
 import { Search, Filter, X, Zap, Thermometer, ShoppingBag, ThermometerSun } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
+import { useDebounce } from '@/hooks/useDebounce';
 
 export default function Products() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,13 +25,17 @@ export default function Products() {
   const [series, setSeries] = useState<string[]>([]);
   const [priceRanges, setPriceRanges] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 24; // Show 24 products per page
+  
+  // Debounce search input to reduce filtering overhead
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
   // Load data from Supabase
   useEffect(() => {
     const loadData = async () => {
       try {
         setLoading(true);
-        console.log('Loading data from Supabase...');
         
         const [productsData, brandsData, seriesData, priceRangesData] = await Promise.all([
           getProducts(),
@@ -38,19 +43,6 @@ export default function Products() {
           getProductSeries(),
           getPriceRanges()
         ]);
-        
-        console.log('Loaded data:', {
-          products: productsData.length,
-          brands: brandsData.length,
-          series: seriesData.length,
-          priceRanges: priceRangesData.length
-        });
-        
-        // Debug: Check for EV charger products
-        const evChargers = productsData.filter(p => p.brand === 'Wallbox' || p.brand === 'Tesla');
-        console.log('EV Charger products loaded:', evChargers.length);
-        evChargers.forEach(p => console.log(`  - ${p.brand} ${p.name}`));
-        
         
         setProducts(productsData);
         setBrands(brandsData.filter(brand => brand && brand.trim() !== ''));
@@ -94,44 +86,26 @@ export default function Products() {
   }, [selectedCategory]);
 
   const filteredProducts = useMemo(() => {
-    console.log('Filtering products:', {
-      totalProducts: products.length,
-      searchTerm,
-      selectedBrand,
-      selectedSeries,
-      selectedPriceRange,
-      selectedCategory
-    });
-    
     let filtered = products;
 
     // Category filter
     if (selectedCategory === 'ev-chargers') {
-      // Show only EV charger products
       filtered = products.filter(product => 
         product.brand === 'Wallbox' || product.brand === 'Tesla'
       );
-      console.log('EV Chargers filter applied:', {
-        totalProducts: products.length,
-        evChargers: filtered.length,
-        evChargerProducts: filtered.map(p => `${p.brand} ${p.name}`)
-      });
     } else if (selectedCategory === 'heat-pumps') {
-      // Show only heat pump products (exclude EV chargers)
       filtered = products.filter(product => 
         product.brand !== 'Wallbox' && product.brand !== 'Tesla'
       );
-    } else {
-      // Show all products (both categories)
-      filtered = products;
     }
 
-    // Search filter
-    if (searchTerm) {
+    // Search filter (use debounced value)
+    if (debouncedSearchTerm) {
+      const searchLower = debouncedSearchTerm.toLowerCase();
       filtered = filtered.filter(product =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.model.toLowerCase().includes(searchTerm.toLowerCase())
+        product.name.toLowerCase().includes(searchLower) ||
+        product.brand.toLowerCase().includes(searchLower) ||
+        (product.model && product.model.toLowerCase().includes(searchLower))
       );
     }
 
@@ -145,40 +119,59 @@ export default function Products() {
       filtered = filtered.filter(product => product.series === selectedSeries);
     }
 
-    // Price range filter
+    // Price range filter - optimized with early exit
     if (selectedPriceRange !== 'all') {
       const range = priceRanges.find(r => r.label === selectedPriceRange);
       if (range) {
         filtered = filtered.filter(product => {
-          const price = parseInt(product.price.replace(/[^0-9]/g, ''));
-          return price >= range.min && price < range.max;
+          // Cache price parsing
+          const priceStr = product.price.replace(/[^0-9]/g, '');
+          if (!priceStr) return false;
+          const price = parseInt(priceStr);
+          return !isNaN(price) && price >= range.min && price < range.max;
         });
       }
     }
 
-
     // Sort - Featured products always come first
-    filtered.sort((a, b) => {
+    // Use toSorted for better performance (if available) or sort in place
+    const sorted = [...filtered].sort((a, b) => {
       // Featured products always come first
       if (a.isFeatured && !b.isFeatured) return -1;
       if (!a.isFeatured && b.isFeatured) return 1;
       
       // If both featured or both not featured, apply regular sorting
       switch (sortBy) {
-        case 'price-low':
-          return parseInt(a.price.replace(/[^0-9]/g, '')) - parseInt(b.price.replace(/[^0-9]/g, ''));
-        case 'price-high':
-          return parseInt(b.price.replace(/[^0-9]/g, '')) - parseInt(a.price.replace(/[^0-9]/g, ''));
+        case 'price-low': {
+          const priceA = parseInt(a.price.replace(/[^0-9]/g, '')) || 0;
+          const priceB = parseInt(b.price.replace(/[^0-9]/g, '')) || 0;
+          return priceA - priceB;
+        }
+        case 'price-high': {
+          const priceA = parseInt(a.price.replace(/[^0-9]/g, '')) || 0;
+          const priceB = parseInt(b.price.replace(/[^0-9]/g, '')) || 0;
+          return priceB - priceA;
+        }
         case 'name':
         default:
           return a.name.localeCompare(b.name);
       }
     });
+    
+    filtered = sorted;
 
-    console.log('Final filtered products:', filtered.length);
     return filtered;
-  }, [products, searchTerm, selectedBrand, selectedSeries, selectedPriceRange, sortBy, selectedCategory]);
+  }, [products, debouncedSearchTerm, selectedBrand, selectedSeries, selectedPriceRange, sortBy, selectedCategory]);
 
+  // Pagination
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const paginatedProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
+
+  // Reset to page 1 when filters change (use debounced search)
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [debouncedSearchTerm, selectedBrand, selectedSeries, selectedPriceRange, selectedCategory]);
 
   const clearFilters = () => {
     setSearchTerm('');
@@ -364,6 +357,11 @@ export default function Products() {
               <div className="space-y-1">
                 <h2 className="text-xl font-semibold">
                   {filteredProducts.length} Product{filteredProducts.length !== 1 ? 's' : ''} Found
+                  {totalPages > 1 && (
+                    <span className="text-base font-normal text-muted-foreground ml-2">
+                      (Showing {startIndex + 1}-{Math.min(startIndex + itemsPerPage, filteredProducts.length)})
+                    </span>
+                  )}
                 </h2>
                 <p className="text-sm text-muted-foreground">
                   {activeFiltersCount > 0 && 'Filtered results'}
@@ -388,14 +386,66 @@ export default function Products() {
 
             {/* Products Grid */}
             {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {filteredProducts.map((product) => (
-                  <ProductCardNew
-                    key={product.id}
-                    product={product}
-                  />
-                ))}
-              </div>
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {paginatedProducts.map((product) => (
+                    <ProductCardNew
+                      key={product.id}
+                      product={product}
+                    />
+                  ))}
+                </div>
+
+                {/* Pagination Controls */}
+                {totalPages > 1 && (
+                  <div className="flex items-center justify-center gap-2 mt-8">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                      disabled={currentPage === 1}
+                    >
+                      Previous
+                    </Button>
+                    <div className="flex items-center gap-1">
+                      {Array.from({ length: Math.min(7, totalPages) }, (_, i) => {
+                        let pageNum;
+                        if (totalPages <= 7) {
+                          pageNum = i + 1;
+                        } else if (currentPage <= 4) {
+                          pageNum = i + 1;
+                        } else if (currentPage >= totalPages - 3) {
+                          pageNum = totalPages - 6 + i;
+                        } else {
+                          pageNum = currentPage - 3 + i;
+                        }
+                        return (
+                          <Button
+                            key={pageNum}
+                            variant={currentPage === pageNum ? "default" : "outline"}
+                            size="sm"
+                            onClick={() => setCurrentPage(pageNum)}
+                            className="min-w-[40px]"
+                          >
+                            {pageNum}
+                          </Button>
+                        );
+                      })}
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                      disabled={currentPage === totalPages}
+                    >
+                      Next
+                    </Button>
+                    <span className="text-sm text-muted-foreground ml-4">
+                      Page {currentPage} of {totalPages}
+                    </span>
+                  </div>
+                )}
+              </>
             ) : (
               <div className="text-center py-12">
                 <div className="text-muted-foreground mb-4">

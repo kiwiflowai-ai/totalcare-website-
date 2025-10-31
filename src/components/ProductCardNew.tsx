@@ -5,13 +5,13 @@ import { QuoteModal } from '@/components/QuoteModal';
 import { Zap, Thermometer, MessageSquare, ExternalLink } from 'lucide-react';
 import { Product } from '@/data/products';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 interface ProductCardNewProps {
   product: Product;
 }
 
-export function ProductCardNew({ product }: ProductCardNewProps) {
+export const ProductCardNew = memo(function ProductCardNew({ product }: ProductCardNewProps) {
   const navigate = useNavigate();
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
@@ -49,17 +49,8 @@ export function ProductCardNew({ product }: ProductCardNewProps) {
             alt={`Auckland heat pump installation - ${product.name} by ${product.brand}`}
             className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
             loading="lazy"
-            onLoad={() => {
-              console.log(`✅ Image loaded successfully for ${product.name}`);
-            }}
+            decoding="async"
             onError={(e) => {
-              console.error(`❌ Image failed to load for ${product.name}:`, {
-                productId: product.id,
-                productName: product.name,
-                imageSrc: displayImage.substring(0, 100) + '...',
-                hasCoverImage: !!product.image,
-                hasProductImages: product.product_images?.length || 0
-              });
               // Hide the broken image and show fallback
               e.currentTarget.style.display = 'none';
               const fallback = e.currentTarget.nextElementSibling as HTMLElement;
@@ -169,4 +160,4 @@ export function ProductCardNew({ product }: ProductCardNewProps) {
       />
     </Card>
   );
-}
+});

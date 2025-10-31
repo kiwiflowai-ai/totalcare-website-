@@ -36,6 +36,25 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    console.log('🚀 Form submit triggered!');
+    console.log('📋 Current form data:', formData);
+    
+    // Validate required fields
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.serviceType || !formData.message) {
+      console.error('❌ Form validation failed - missing required fields');
+      console.error('Missing fields:', {
+        firstName: !formData.firstName,
+        lastName: !formData.lastName,
+        email: !formData.email,
+        phone: !formData.phone,
+        serviceType: !formData.serviceType,
+        message: !formData.message
+      });
+      setSubmitStatus('error');
+      return;
+    }
+    
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -48,33 +67,41 @@ export default function Contact() {
         serviceType: formData.serviceType,
         message: formData.message,
         timestamp: new Date().toISOString(),
-        source: 'contact_page_form'
+        source: 'contact_page_form',
+        website: 'totalcareelectrical.co.nz'
       };
 
-      console.log('Sending webhook data:', webhookData);
+      console.log('📤 Sending webhook data:', webhookData);
+      console.log('🌐 Webhook URL: https://hook.us2.make.com/p2rf9okiehaj8scot6qdreachdilqvv7');
 
-      // Try the Make.com webhook first
-      let response = await fetch('https://hook.us2.make.com/86munefvlmu6q6q76sinbt4rf7c0txcx', {
+      // Send to Make.com webhook
+      const response = await fetch('https://hook.us2.make.com/p2rf9okiehaj8scot6qdreachdilqvv7', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify(webhookData)
+        body: JSON.stringify(webhookData),
+        mode: 'cors',
       });
 
-      // If Make.com webhook fails, show success anyway (for now)
-      if (!response.ok) {
-        console.log('Make.com webhook failed, but showing success to user...');
-        // For now, we'll show success even if webhook fails
-        // This prevents user frustration while you fix the webhook
-        response = { ok: true } as Response;
+      console.log('📥 Response status:', response.status);
+      console.log('✅ Response ok:', response.ok);
+      console.log('📋 Response headers:', Object.fromEntries(response.headers.entries()));
+
+      // Try to read response body for debugging
+      let responseBody = '';
+      try {
+        responseBody = await response.text();
+        console.log('📄 Response body:', responseBody);
+      } catch (readError) {
+        console.log('⚠️ Could not read response body:', readError);
       }
 
-      console.log('Response status:', response.status);
-      console.log('Response ok:', response.ok);
-
-      if (response.ok) {
-        console.log('Contact form submitted successfully');
+      // Make.com webhooks typically return 200 OK for successful submissions
+      // Some may return 202 Accepted or other 2xx status codes
+      if (response.ok || response.status === 200 || response.status === 202) {
+        console.log('✅ Contact form submitted successfully to webhook');
         setSubmitStatus('success');
         setFormData({
           firstName: '',
@@ -85,12 +112,17 @@ export default function Contact() {
           message: ''
         });
       } else {
-        const errorText = await response.text();
-        console.error('Failed to submit contact form. Status:', response.status, 'Error:', errorText);
+        console.error('❌ Failed to submit contact form.');
+        console.error('Status:', response.status);
+        console.error('Status Text:', response.statusText);
+        console.error('Response Body:', responseBody);
         setSubmitStatus('error');
       }
     } catch (error) {
-      console.error('Error submitting contact form:', error);
+      console.error('💥 Error submitting contact form:', error);
+      if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+        console.error('🌐 Network error - webhook may be unreachable or CORS blocked');
+      }
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -228,7 +260,14 @@ export default function Contact() {
 
                   {submitStatus === 'error' && (
                     <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                      <p className="text-red-800 font-medium">Sorry, there was an error sending your message. Please try again or call us directly at +64 27 750 0999.</p>
+                      <p className="text-red-800 font-medium mb-2">Sorry, there was an error sending your message.</p>
+                      <p className="text-red-700 text-sm">
+                        Please ensure all required fields are filled out, especially the Service Type field, and try again. 
+                        If the problem persists, call us directly at +64 27 750 0999.
+                      </p>
+                      <p className="text-red-600 text-xs mt-2">
+                        💡 Check the browser console (F12) for detailed error messages.
+                      </p>
                     </div>
                   )}
 

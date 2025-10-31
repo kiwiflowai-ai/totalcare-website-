@@ -47,6 +47,10 @@ function generateId(name: string, model: string): string {
 
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 
+// Simple cache for products data (5 minute TTL)
+let productsCache: { data: Product[]; timestamp: number } | null = null;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
 // Function to fetch products from Supabase
 export async function getProducts(): Promise<Product[]> {
   try {
@@ -56,84 +60,43 @@ export async function getProducts(): Promise<Product[]> {
       return products;
     }
 
-    console.log('Fetching products from Supabase...');
-    
-    // Fetch all product fields needed for display
+    // Check cache first
+    if (productsCache && Date.now() - productsCache.timestamp < CACHE_DURATION) {
+      return productsCache.data;
+    }
+
+    // Fetch only lightweight fields for grid view (exclude description and full product_images)
+    // Description and full product_images will be fetched on detail page
     const { data, error } = await supabase
       .from('products')
-      .select('id,name,brand,model,price,description,cooling_capacity,heating_capacity,has_wifi,series,image,product_images,promotions,warranty')
-      .order('created_at', { ascending: false });
-
-    console.log('Supabase response:', { data, error });
+      .select('id,name,brand,model,price,cooling_capacity,heating_capacity,has_wifi,series,image,promotions,warranty')
+      .order('created_at', { ascending: false })
+      .limit(200); // Add limit for safety
 
     if (error) {
-      console.error('❌ Supabase Error Details:', {
-        message: error.message,
-        details: error.details,
-        hint: error.hint,
-        code: error.code
-      });
-      console.warn('⚠️ Using fallback products due to Supabase error');
+      if (import.meta.env.DEV) {
+        console.error('❌ Supabase Error:', error.message);
+      }
       return products;
     }
 
     if (!data || data.length === 0) {
-      console.log('No products found in Supabase, using fallback');
       return products;
     }
 
-    // Convert Supabase format to our Product interface
+    // Convert Supabase format to our Product interface (lightweight for grid)
     const convertedProducts = data.map((product: any) => {
-      // Log details for product 222 specifically
-      if (product.id === '222') {
-        console.log('=== PRODUCT 222 DETAILS ===');
-        console.log('Product name:', product.name);
-        console.log('Product images type:', typeof product.product_images);
-        console.log('Product images value:', product.product_images);
-        console.log('Is array?', Array.isArray(product.product_images));
-        if (Array.isArray(product.product_images)) {
-          console.log('Array length:', product.product_images.length);
-          product.product_images.forEach((img, index) => {
-            console.log(`Image ${index}:`, {
-              type: typeof img,
-              length: img?.length || 0,
-              startsWith: img?.substring(0, 50) || 'null/undefined',
-              isBase64: img?.startsWith('data:image/') || false
-            });
-          });
-        } else {
-          console.log('Product images is not an array, value:', product.product_images);
-        }
-        console.log('========================');
-      }
-      
-      // Normalize product_images which may be stored as text or array
-      let normalizedImages: string[] = [];
-      if (Array.isArray(product.product_images)) {
-        normalizedImages = product.product_images as string[];
-      } else if (typeof product.product_images === 'string' && product.product_images.trim() !== '') {
-        try {
-          const parsed = JSON.parse(product.product_images);
-          if (Array.isArray(parsed)) normalizedImages = parsed;
-        } catch {
-          // If parsing fails, try treating it as a single image path
-          normalizedImages = [product.product_images];
-        }
-      }
-
-      // Get the best image: prefer cover image, fallback to first product_image
-      let bestImage = '';
-      if (product.image && product.image.trim() !== '') {
-        bestImage = product.image.trim();
-      } else if (normalizedImages.length > 0) {
-        bestImage = normalizedImages[0];
-      }
+      // For grid view, we only use the cover image
+      // Full product_images will be fetched on detail page
+      const bestImage = (product.image && product.image.trim() !== '') 
+        ? product.image.trim() 
+        : '';
 
       return {
         id: product.id,
         name: product.name,
         brand: product.brand,
-        description: product.description || '',
+        description: '', // Will be fetched on detail page
         model: product.model || '',
         price: product.price || '',
         promotions: (product.promotions && product.promotions !== '[]' && product.promotions.trim() !== '') ? product.promotions : '',
@@ -142,24 +105,32 @@ export async function getProducts(): Promise<Product[]> {
         hasWifi: product.has_wifi || false,
         series: product.series || '',
         image: bestImage,
-        product_images: normalizedImages,
+        product_images: [], // Empty for grid, will be fetched on detail page
         warranty: product.warranty || '',
-        isFeatured: false // Default to false if column doesn't exist
+        isFeatured: false
       };
     });
 
-    console.log(`Successfully converted ${convertedProducts.length} products`);
-    
-    // Debug: Check for EV charger products in converted data
-    const evChargers = convertedProducts.filter(p => p.brand === 'Wallbox' || p.brand === 'Tesla');
-    console.log('EV Charger products in converted data:', evChargers.length);
-    evChargers.forEach(p => console.log(`  - ${p.brand} ${p.name}`));
-    
+    // Cache the results
+    productsCache = {
+      data: convertedProducts,
+      timestamp: Date.now()
+    };
+
     return convertedProducts;
   } catch (error) {
     console.error('Error fetching products:', error);
+    // Return cache if available, even if expired
+    if (productsCache) {
+      return productsCache.data;
+    }
     return products;
   }
+}
+
+// Function to clear cache (useful for testing or forced refresh)
+export function clearProductsCache(): void {
+  productsCache = null;
 }
 
 // Fetch a single product by id with full fields
