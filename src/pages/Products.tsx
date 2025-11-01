@@ -31,17 +31,20 @@ export default function Products() {
   // Debounce search input to reduce filtering overhead
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
-  // Load data from Supabase
+  // Load data from Supabase - OPTIMIZED: Fetch products once, then derive filter data
   useEffect(() => {
     const loadData = async () => {
       try {
         setLoading(true);
         
-        const [productsData, brandsData, seriesData, priceRangesData] = await Promise.all([
-          getProducts(),
-          getBrands(),
-          getProductSeries(),
-          getPriceRanges()
+        // Fetch products once (this is the only API call)
+        const productsData = await getProducts();
+        
+        // Derive filter data from the fetched products (no additional API calls)
+        const [brandsData, seriesData, priceRangesData] = await Promise.all([
+          getBrands(productsData),  // Pass products to avoid duplicate fetch
+          getProductSeries(productsData),  // Pass products to avoid duplicate fetch
+          getPriceRanges(productsData)  // Pass products to avoid duplicate fetch
         ]);
         
         setProducts(productsData);

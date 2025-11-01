@@ -2312,21 +2312,19 @@ Outdoor Sound Level (dBA):54`,
 ];
 
 // Helper functions for filtering
-export const getBrands = async () => {
-  const products = await getProducts();
-  return [...new Set(products.map(p => p.brand))];
+// Optimized: Accept optional products parameter to avoid duplicate fetching
+export const getBrands = async (products?: Product[]) => {
+  const productsData = products || await getProducts();
+  return [...new Set(productsData.map(p => p.brand).filter(Boolean))];
 };
 
-export const getProductSeries = async () => {
-  const products = await getProducts();
-  return [...new Set(products.map(p => p.series))];
+export const getProductSeries = async (products?: Product[]) => {
+  const productsData = products || await getProducts();
+  return [...new Set(productsData.map(p => p.series).filter(Boolean))];
 };
 
-export const getPriceRanges = async () => {
-  const products = await getProducts();
-  const prices = products.map(p => parsePrice(p.price));
-  const min = Math.min(...prices);
-  const max = Math.max(...prices);
+export const getPriceRanges = async (products?: Product[]) => {
+  // Use static price ranges - more predictable than calculating from data
   return [
     { label: 'Under $2,000', min: 0, max: 2000 },
     { label: '$2,000 - $3,000', min: 2000, max: 3000 },
