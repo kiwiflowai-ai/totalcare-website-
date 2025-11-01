@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -61,22 +61,33 @@ export default function Products() {
     loadData();
   }, []);
 
+  // Track if we're updating from URL to prevent circular updates
+  const isUpdatingFromURL = useRef(false);
+
   // Handle URL parameters - sync on mount and when URL changes
   useEffect(() => {
     const category = searchParams.get('category');
+    isUpdatingFromURL.current = true; // Mark that we're updating from URL
+    
     if (category === 'ev-chargers') {
       setSelectedCategory('ev-chargers');
     } else if (category === 'heat-pumps') {
       setSelectedCategory('heat-pumps');
     } else if (!category) {
-      // Only set to 'all' if no category param exists
       setSelectedCategory('all');
     }
   }, [searchParams]);
 
-  // Update URL when category changes (but not from URL param reads)
+  // Update URL when category changes via UI (not from URL reads)
   useEffect(() => {
+    // Skip if we're updating from URL to avoid circular updates
+    if (isUpdatingFromURL.current) {
+      isUpdatingFromURL.current = false;
+      return;
+    }
+
     const currentCategory = searchParams.get('category');
+    
     // Only update URL if category state doesn't match URL param
     if (selectedCategory === 'all' && currentCategory) {
       // Remove category param when "all" is selected
