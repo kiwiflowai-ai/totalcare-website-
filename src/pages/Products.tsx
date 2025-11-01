@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -26,10 +26,13 @@ export default function Products() {
   const [priceRanges, setPriceRanges] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 24; // Show 24 products per page
+  
+  // Constants
+  const ITEMS_PER_PAGE = 24;
+  const DEBOUNCE_DELAY = 300;
   
   // Debounce search input to reduce filtering overhead
-  const debouncedSearchTerm = useDebounce(searchTerm, 300);
+  const debouncedSearchTerm = useDebounce(searchTerm, DEBOUNCE_DELAY);
 
   // Load data from Supabase - OPTIMIZED: Fetch products once, then derive filter data
   useEffect(() => {
@@ -189,23 +192,23 @@ export default function Products() {
   }, [products, debouncedSearchTerm, selectedBrand, selectedSeries, selectedPriceRange, sortBy, selectedCategory]);
 
   // Pagination
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedProducts = filteredProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   // Reset to page 1 when filters change (use debounced search)
   useEffect(() => {
     setCurrentPage(1);
   }, [debouncedSearchTerm, selectedBrand, selectedSeries, selectedPriceRange, selectedCategory]);
 
-  const clearFilters = () => {
+  const clearFilters = useCallback(() => {
     setSearchTerm('');
     setSelectedBrand('all');
     setSelectedSeries('all');
     setSelectedPriceRange('all');
     setSortBy('name');
     setSelectedCategory('all');
-  };
+  }, []);
 
   const activeFiltersCount = [
     searchTerm,
@@ -384,7 +387,7 @@ export default function Products() {
                   {filteredProducts.length} Product{filteredProducts.length !== 1 ? 's' : ''} Found
                   {totalPages > 1 && (
                     <span className="text-base font-normal text-muted-foreground ml-2">
-                      (Showing {startIndex + 1}-{Math.min(startIndex + itemsPerPage, filteredProducts.length)})
+                      (Showing {startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, filteredProducts.length)})
                     </span>
                   )}
                 </h2>

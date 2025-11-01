@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ProductCardNew } from './ProductCardNew';
@@ -29,13 +29,13 @@ export function ProductGrid() {
 
   const maxIndex = Math.max(0, products.length - itemsPerPage);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
-  };
+  }, [maxIndex]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentIndex((prev) => Math.max(prev - 1, 0));
-  };
+  }, []);
 
   const visibleProducts = products.slice(currentIndex, currentIndex + itemsPerPage);
 

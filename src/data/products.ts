@@ -47,9 +47,12 @@ function generateId(name: string, model: string): string {
 
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 
+// Cache configuration
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+const MAX_PRODUCTS_LIMIT = 200; // Safety limit for queries
+
 // Simple cache for products data (5 minute TTL)
 let productsCache: { data: Product[]; timestamp: number } | null = null;
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
 // Function to fetch products from Supabase
 export async function getProducts(): Promise<Product[]> {
@@ -71,7 +74,7 @@ export async function getProducts(): Promise<Product[]> {
       .from('products')
       .select('id,name,brand,model,price,cooling_capacity,heating_capacity,has_wifi,series,image,promotions,warranty')
       .order('created_at', { ascending: false })
-      .limit(200); // Add limit for safety
+      .limit(MAX_PRODUCTS_LIMIT);
 
     if (error) {
       if (import.meta.env.DEV) {
