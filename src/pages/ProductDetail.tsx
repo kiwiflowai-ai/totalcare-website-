@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, Thermometer, Wifi, Zap, Settings, MessageSquare, Images, FileText } from 'lucide-react';
+import { ArrowLeft, Thermometer, Wifi, Zap, Settings, CheckCircle, MessageSquare, Images, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
