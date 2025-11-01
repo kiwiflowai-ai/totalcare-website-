@@ -31,7 +31,7 @@ export default function Services() {
         source: 'services_page_contact_form'
       };
 
-      const response = await fetch('https://hook.us2.make.com/p2rf9okiehaj8scot6qdreachdilqvv7', {
+      const response = await fetch('https://hook.us2.make.com/sui70ratqagk38ttekllz681l5w2i9zu', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
